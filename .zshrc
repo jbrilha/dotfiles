@@ -105,6 +105,7 @@ alias lsa='colorls --all'           # [-a] lists all
 alias lsA='colorls --almost-all'    # [-A] lists all except ./ and ../
 alias lsT='colorls --tree'          # file tree MAXDEPTH
 alias lst='colorls --tree=3'        # file tree DEPTH = 3
+alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
