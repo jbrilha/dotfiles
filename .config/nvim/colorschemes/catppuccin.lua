@@ -1,7 +1,7 @@
 return {
         "catppuccin/nvim",
-        name = "catppuccin",   
-        
+        name = "catppuccin",
+
         opts = {
             transparent_background = true,
             styles = {

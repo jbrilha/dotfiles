@@ -1,6 +1,6 @@
 return {
         "navarasu/onedark.nvim",
-		name = "onedark"
+		name = "onedark",
 		-- Lua
 		config = function()
 		require('onedark').setup  {
