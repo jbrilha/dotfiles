@@ -10,7 +10,7 @@ return{
                   "markdown", "markdown_inline", "ruby", "rust", "xml", "yaml"
                 },
             auto_install = true,
-            highlight = { enable = truee },
+            highlight = { enable = true },
             indent = { enable = true },
         }
     end
