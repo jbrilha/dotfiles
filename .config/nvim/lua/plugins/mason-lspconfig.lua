@@ -10,7 +10,7 @@ return {
         config = function()
             require("mason-lspconfig").setup({
                 ensure_installed = {
-                    "jedi_language_server", "clangd",
+                    "jedi_language_server", "pylsp", "clangd",
                     "dockerls", "html","tsserver", "eslint",
                     "texlab", "lua_ls", "marksman", "rust_analyzer",
                 }
@@ -26,7 +26,18 @@ return {
 
             local lspconfig = require("lspconfig")
             lspconfig.tsserver.setup({ capabilities = capabilities})
-            -- lspconfig.pyright.setup({ capabilities = capabilities})
+            -- lspconfig.pylsp.setup({
+            --     capabilities = capabilities,
+            --     settings = {
+            --         pylsp = {
+            --             plugins = {
+            --                 jedi = {
+            --                     environment = 'opt/homebrew/bin/python3',
+            --                 }
+            --             }
+            --         }
+            --     }
+            -- })
             lspconfig.jedi_language_server.setup({ capabilities = capabilities})
             lspconfig.clangd.setup({ capabilities = capabilities})
             lspconfig.dockerls.setup({ capabilities = capabilities})
