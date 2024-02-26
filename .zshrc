@@ -119,6 +119,9 @@ alias tnf='tmux new -d && tmux send-keys "neofetch" Enter && tmux a'
 # cd home
 alias h='cd ~'
 
+# new tmux window to Game folder
+alias game='tmux new-window -c ~/Developer/GLFW/GAME; tmux rename-window GAME'
+
 # need this so shell knows where ruby is (initially for mdless)
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 
