@@ -94,6 +94,8 @@ bindkey '^[[Z' autosuggest-accept # shift + tab
 #bindkey '/t' menu-complete    # tab -> overrides default tab completion
 
 # ALIASES
+alias py='python3'
+
 alias ls='colorls'                  # no flags
 alias ls1='colorls -1'              # 1 entry per line
 alias lsd='colorls --dirs'          # [-d] dirs only
@@ -113,7 +115,8 @@ alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir
 # git aliases
 alias gs='git status'
 
-# tmux with neofetch
+alias ff='fastfetch'
+# start tmux with fastfetch
 alias tff='tmux new -d && tmux send-keys "fastfetch" Enter && tmux a'
 
 # cd home
@@ -127,7 +130,7 @@ export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 export JAVA_HOME=$(/usr/libexec/java_home)
-export JAVA_HOME=$(/usr/libexec/java_home -v 11)
+#export JAVA_HOME=$(/usr/libexec/java_home -v 11)
 export PATH=/Users/joaobrilha/apache/apache-maven-3.9.6/bin:$PATH
 
 
