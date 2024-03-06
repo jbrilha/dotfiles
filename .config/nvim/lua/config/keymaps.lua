@@ -1,6 +1,10 @@
 -- General
 vim.g.mapleader = " "
 
+-- Buffers
+vim.keymap.set('n', '<leader>bn', ':bnext<CR>')
+vim.keymap.set('n', '<leader>bp', ':bprev<CR>')
+
 -- LiveServer
 vim.keymap.set('n', '<leader>ls', ':LiveServerStart<CR>')
 vim.keymap.set('n', '<leader>lk', ':LiveServerStop<CR>')
