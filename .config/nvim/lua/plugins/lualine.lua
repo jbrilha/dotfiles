@@ -24,7 +24,17 @@ return {
             sections = {
                 lualine_a = {'mode'},
                 lualine_b = {'branch', 'diff', 'diagnostics'},
-                lualine_c = {'filename'},
+                lualine_c = {
+                    {
+                        'buffers',
+                        icons_enabled = false,
+                        mode = 4,
+                        buffers_color = {
+                            active = { fg = vim.fn.mode(), bg = nil, gui='bold' },
+                            inactive = { fg = vim.fn.mode(), bg = '#22242e' },
+                        },
+                    }
+                },
                 lualine_x = {'encoding', 'fileformat', 'filetype'},
                 lualine_y = {'progress'},
                 lualine_z = {'location'}
