@@ -122,17 +122,18 @@ alias tff='tmux new -d && tmux send-keys "fastfetch" Enter && tmux a'
 # cd home
 alias h='cd ~'
 
-# new tmux window to Game folder
+# new tmux window to Game folder -- MUST have a tmux session started already
 alias game='tmux new-window -c ~/Developer/GLFW/GAME; tmux rename-window GAME'
-
+alias rv2='tmux new-window -c ~/Developer/rust/exp; tmux rename-window V2; tmux split-window -h -c "#{pane_current_path}"; tmux split-window -v -c "#{pane_current_path}"; tmux select-pane -t 0; tmux send-keys "nvim src/main.rs" Enter'
 # need this so shell knows where ruby is (initially for mdless)
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-export JAVA_HOME=$(/usr/libexec/java_home)
-#export JAVA_HOME=$(/usr/libexec/java_home -v 11)
+# export JAVA_HOME=$(/usr/libexec/java_home)
+export JAVA_HOME=$(/usr/libexec/java_home -v 11)
 export PATH=/Users/joaobrilha/apache/apache-maven-3.9.6/bin:$PATH
 
+export PATH=$HOME/Developer/flutter/:$PATH
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/joaobrilha/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/joaobrilha/google-cloud-sdk/path.zsh.inc'; fi
