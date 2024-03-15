@@ -135,8 +135,12 @@ export PATH=/Users/joaobrilha/apache/apache-maven-3.9.6/bin:$PATH
 
 export PATH=$HOME/Developer/flutter/:$PATH
 
+export FZF_DEFAULT_OPTS_FILE=~/.fzfrc
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/joaobrilha/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/joaobrilha/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/joaobrilha/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/joaobrilha/google-cloud-sdk/completion.zsh.inc'; fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
