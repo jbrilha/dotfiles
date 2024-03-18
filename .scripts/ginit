@@ -1,0 +1,28 @@
+#!/bin/zsh
+
+repo_name=""
+vis="private"
+
+while getopts ":P" opt; do
+    case $opt in
+        P) vis="public";;
+        \?) echo "Invalid flag: -$OPTARG" >&2;;
+    esac
+done
+shift $((OPTIND -1))
+
+if [[ -z "$1" ]]; then
+    echo "Usage: $0 [(-P)ublic] repo_name"
+    exit 1
+fi
+
+repo_name="$1"
+
+gh repo create "$repo_name" --"$vis"
+echo "# $repo_name" >> README.md
+git init
+git add .
+git commit -m "First commit"
+git branch -M master
+git remote add origin "https://github.com/jbrilha/$repo_name.git"
+git push -u origin master
