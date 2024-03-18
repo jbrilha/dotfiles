@@ -31,13 +31,13 @@ return {
 		config = function()
 			require("mason-lspconfig").setup({
 				ensure_installed = {
-					"pylsp", "clangd", "cmake", --"jdtls",
+					"pylsp", "clangd", "cmake", "lemminx", --"jdtls",
 					"dockerls", "html", "tsserver", "eslint",
 					"texlab", "lua_ls", "marksman", "rust_analyzer",
 				},
 				-- handlers = {
 				-- 	["jdtls"] = function()
-						-- require("java").setup({}),
+				-- require("java").setup({}),
 				-- 	end,
 				-- },
 
@@ -54,6 +54,16 @@ return {
 
 			local lspconfig = require("lspconfig")
 			lspconfig.tsserver.setup({ capabilities = capabilities })
+			lspconfig.lemminx.setup({
+				capabilities = capabilities,
+				settings = {
+					xml = {
+						server = {
+							workDir = "~/.cache/lemminx",
+						},
+					},
+				},
+			})
 			lspconfig.pyright.setup({ capabilities = capabilities })
 			-- lspconfig.jedi_language_server.setup({ capabilities = capabilities})
 			lspconfig.clangd.setup({
@@ -72,9 +82,9 @@ return {
 			lspconfig.marksman.setup({ capabilities = capabilities })
 			lspconfig.rust_analyzer.setup({ capabilities = capabilities })
 			lspconfig.jdtls.setup({
-                capabilities = capabilities,
-                -- cmd = { 'jdtls' },
-            })
+				capabilities = capabilities,
+				-- cmd = { 'jdtls' },
+			})
 			-- lspconfig.java_language_server.setup({ capabilities = capabilities})
 
 			-- Use LspAttach autocommand to only map the following keys
