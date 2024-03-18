@@ -129,13 +129,15 @@ alias rv2='tmux new-window -c ~/Developer/rust/exp; tmux rename-window V2; tmux 
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-# export JAVA_HOME=$(/usr/libexec/java_home)
-export JAVA_HOME=$(/usr/libexec/java_home -v 11)
+export JAVA_HOME=$(/usr/libexec/java_home)
+# export JAVA_HOME=$(/usr/libexec/java_home -v 11)
 export PATH=/Users/joaobrilha/apache/apache-maven-3.9.6/bin:$PATH
 
 export PATH=$HOME/Developer/flutter/:$PATH
 
 export FZF_DEFAULT_OPTS_FILE=~/.fzfrc
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/joaobrilha/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/joaobrilha/google-cloud-sdk/path.zsh.inc'; fi
@@ -143,4 +145,9 @@ if [ -f '/Users/joaobrilha/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/joao
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/joaobrilha/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/joaobrilha/google-cloud-sdk/completion.zsh.inc'; fi
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export DATASTORE_USE_PROJECT_ID_AS_APP_ID=true
+export DATASTORE_DATASET=inspired-aria-415914
+export DATASTORE_EMULATOR_HOST=localhost:8081
+export DATASTORE_EMULATOR_HOST_PATH=localhost:8081/datastore
+export DATASTORE_HOST=http://localhost:8081
+export DATASTORE_PROJECT_ID=inspired-aria-415914
