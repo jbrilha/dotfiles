@@ -129,8 +129,10 @@ alias rv2='tmux new-window -c ~/Developer/rust/exp; tmux rename-window V2; tmux 
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
 export JAVA_HOME=$(/usr/libexec/java_home)
 # export JAVA_HOME=$(/usr/libexec/java_home -v 11)
+
 export PATH=/Users/joaobrilha/apache/apache-maven-3.9.6/bin:$PATH
 
 export PATH=$HOME/Developer/flutter/:$PATH
