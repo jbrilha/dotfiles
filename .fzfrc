@@ -1,7 +1,7 @@
 --height 40%
 --layout=reverse
 --border
---multi --bind 'enter:become(nvim {+})'
+--multi
 
 --color=dark
 --color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f
