@@ -30,8 +30,8 @@ return {
                         icons_enabled = false,
                         mode = 4,
                         buffers_color = {
-                            active = { fg = vim.fn.mode(), bg = nil, gui='bold' },
-                            inactive = { fg = vim.fn.mode(), bg = '#22242e' },
+                            active = { fg = vim.fn.mode(), bg = '#22242e', gui='bold' },
+                            inactive = { fg = '#919acf', bg = nil},
                         },
                     }
                 },
