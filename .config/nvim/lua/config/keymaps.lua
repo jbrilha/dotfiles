@@ -25,3 +25,6 @@ vim.keymap.set('', '<leader>P', '"+P')
 
 -- Find and replace word under cursor
 vim.keymap.set('n', '<leader>s', ':%s/\\<<C-r><C-w>\\>/')
+-- vim.keymap.set('v', '<leader>s', ':%s/\\<<C-r>@\\>/')
+-- vim.keymap.set('v', '<leader>s', [[:%s/\V<C-r>=@<CR>//g<Left><Left>]])
+
