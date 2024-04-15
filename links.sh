@@ -8,5 +8,3 @@ ln -s ~/.dotfiles/iterm ~/
 ln -s ~/.dotfiles/.p10k.zsh ~/
 
 sudo ln -s ~/.scripts/* /usr/local/bin/
-# sudo ln -s ~/.scripts/ginit /usr/local/bin/
-# sudo ln -s ~/.scripts/gbranch /usr/local/bin/

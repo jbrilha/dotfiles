@@ -92,6 +92,7 @@ source $ZSH/oh-my-zsh.sh
 # KEYBINDS
 bindkey '^[[Z' autosuggest-accept # shift + tab
 #bindkey '/t' menu-complete    # tab -> overrides default tab completion
+bindkey -s ^f "tmux-sessionizer\n"
 
 # ALIASES
 alias py='python3'
