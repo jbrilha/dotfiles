@@ -28,3 +28,5 @@ vim.keymap.set('n', '<leader>s', ':%s/\\<<C-r><C-w>\\>/')
 -- vim.keymap.set('v', '<leader>s', ':%s/\\<<C-r>@\\>/')
 -- vim.keymap.set('v', '<leader>s', [[:%s/\V<C-r>=@<CR>//g<Left><Left>]])
 
+-- vim.keymap.set('', '-', '')
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })

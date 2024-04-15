@@ -109,7 +109,7 @@ alias lsT='colorls --tree'          # file tree MAXDEPTH
 alias lst='colorls --tree=3'        # file tree DEPTH = 3
 alias lsta='colorls --tree=3 --all'        # file tree DEPTH = 3
 
-alias nconf='cd ~/.config/nvim/lua && nvim .'
+alias nconf='current_dir=$(pwd); cd ~/.config/nvim/lua && nvim . && cd "$current_dir"'
 
 # ranger exits to current dir
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
@@ -130,8 +130,8 @@ export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-# export JAVA_HOME=$(/usr/libexec/java_home)
-export JAVA_HOME=$(/usr/libexec/java_home -v 11)
+export JAVA_HOME=$(/usr/libexec/java_home)
+# export JAVA_HOME=$(/usr/libexec/java_home -v 11)
 
 export PATH=/Users/joaobrilha/apache/apache-maven-3.9.6/bin:$PATH
 

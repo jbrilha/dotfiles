@@ -33,15 +33,9 @@ return {
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"pylsp", "clangd", "cmake", "lemminx", --"jdtls",
-					"dockerls", "html", "tsserver", "eslint",
-					"texlab", "lua_ls", "marksman", "rust_analyzer",
+					"dockerls", "html", "tsserver", "eslint", "texlab",
+					"lua_ls", "marksman", "rust_analyzer", "glsl_analyzer",
 				},
-				-- handlers = {
-				-- 	["jdtls"] = function()
-				-- require("java").setup({}),
-				-- 	end,
-				-- },
-
 				automatic_installation = true,
 			})
 		end,
@@ -66,7 +60,6 @@ return {
 				},
 			})
 			lspconfig.pyright.setup({ capabilities = capabilities })
-			-- lspconfig.jedi_language_server.setup({ capabilities = capabilities})
 			lspconfig.clangd.setup({
 				capabilities = capabilities,
 				cmd = {
@@ -82,11 +75,8 @@ return {
 			lspconfig.lua_ls.setup({ capabilities = capabilities })
 			lspconfig.marksman.setup({ capabilities = capabilities })
 			lspconfig.rust_analyzer.setup({ capabilities = capabilities })
-			lspconfig.jdtls.setup({
-				capabilities = capabilities,
-				-- cmd = { 'jdtls' },
-			})
-			-- lspconfig.java_language_server.setup({ capabilities = capabilities})
+			lspconfig.glsl_analyzer.setup({ capabilities = capabilities })
+			lspconfig.jdtls.setup({ capabilities = capabilities })
 
 			-- Use LspAttach autocommand to only map the following keys
 			-- after the language server attaches to the current buffer
@@ -113,9 +103,6 @@ return {
 					vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
 					vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
 					vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-					-- vim.keymap.set("n", "<leader>f", function()
-					-- 	vim.lsp.buf.format({ async = true })
-					-- end, opts)
 					vim.keymap.set("v", "<leader>gf", vim.lsp.buf.format, opts)
 				end,
 			})
