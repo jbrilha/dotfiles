@@ -90,90 +90,22 @@ source $(dirname $(gem which colorls))/tab_complete.sh
 source $ZSH/oh-my-zsh.sh
 
 # KEYBINDS
-bindkey '^[[Z' autosuggest-accept # shift + tab
-#bindkey '/t' menu-complete    # tab -> overrides default tab completion
-bindkey -s ^f "tmux-sessionizer\n"
+if [ -f ~/.binds ]; then
+    source ~/.binds
+fi
 
 # ALIASES
-alias py='python3'
+if [ -f ~/.aliases ]; then
+    source ~/.aliases
+fi
 
-alias ls='colorls'                  # no flags
-alias ls1='colorls -1'              # 1 entry per line
-alias lsd='colorls --dirs'          # [-d] dirs only
-alias lsf='colorls --files'         # [-f] files only
-alias lsdf='colorls --sort-dirs'    # [-sd] dirs then files
-alias lsfd='colorls --sort-files'    # [-f] files then dirs
-alias lsl='colorls --long'          # [-l] long listing
-alias lsa='colorls --all'           # [-a] lists all 
-alias lsA='colorls --almost-all'    # [-A] lists all except ./ and ../
-alias lsT='colorls --tree'          # file tree MAXDEPTH
-alias lst='colorls --tree=3'        # file tree DEPTH = 3
-alias lsta='colorls --tree=3 --all'        # file tree DEPTH = 3
-
-alias nconf='nvim ~/.config/nvim/lua'
-
-# ranger exits to current dir
-alias rng='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
-
-# git aliases
-alias gs='git status'
-
-alias ff='fastfetch'
-# start tmux with fastfetch
-alias tff='tmux new -d && tmux send-keys "fastfetch" Enter && tmux a'
-
-# new tmux window to Game folder -- MUST have a tmux session started already
-alias game='tmux new-window -c ~/Developer/C++/GAME; tmux rename-window GAME'
-alias cgol='tmux new-window -c ~/Developer/C++/CGOL; tmux rename-window CGOL'
-alias rv2='tmux new-window -c ~/Developer/rust/exp; tmux rename-window V2; tmux split-window -h -c "#{pane_current_path}"; tmux split-window -v -c "#{pane_current_path}"; tmux select-pane -t 0; tmux send-keys "nvim src/main.rs" Enter'
-
-n ()
-{
-    # Block nesting of nnn in subshells
-    [ "${NNNLVL:-0}" -eq 0 ] || {
-        echo "nnn is already running"
-        return
-    }
-
-    # The behaviour is set to cd on quit (nnn checks if NNN_TMPFILE is set)
-    # If NNN_TMPFILE is set to a custom path, it must be exported for nnn to
-    # see. To cd on quit only on ^G, remove the "export" and make sure not to
-    # use a custom path, i.e. set NNN_TMPFILE *exactly* as follows:
-    #      NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
-    export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
-
-    # Unmask ^Q (, ^V etc.) (if required, see `stty -a`) to Quit nnn
-    # stty start undef
-    # stty stop undef
-    # stty lwrap undef
-    # stty lnext undef
-
-    # The command builtin allows one to alias nnn to n, if desired, without
-    # making an infinitely recursive alias
-    command nnn -xR "$@"
-
-    [ ! -f "$NNN_TMPFILE" ] || {
-        . "$NNN_TMPFILE"
-        rm -f -- "$NNN_TMPFILE" > /dev/null
-    }
-}
-
-export NNN_FIFO=/tmp/nnn.fifo
-export NNN_PLUG='p:preview-tui;'
-
-# need this so shell knows where ruby is (initially for mdless)
-export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+# EXPORTS
+if [ -f ~/.exports ]; then
+    source ~/.exports
+fi
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-export JAVA_HOME=$(/usr/libexec/java_home)
-# export JAVA_HOME=$(/usr/libexec/java_home -v 11)
-
-export PATH=/Users/joaobrilha/apache/apache-maven-3.9.6/bin:$PATH
-
-export PATH=$HOME/Developer/flutter/bin/:$PATH
-
-export FZF_DEFAULT_OPTS_FILE=~/.fzfrc
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -182,12 +114,3 @@ if [ -f '/Users/joaobrilha/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/joao
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/joaobrilha/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/joaobrilha/google-cloud-sdk/completion.zsh.inc'; fi
-
-export DATASTORE_USE_PROJECT_ID_AS_APP_ID=true
-# export DATASTORE_DATASET=inspired-aria-415914
-export DATASTORE_DATASET=flutterby-64421
-export DATASTORE_EMULATOR_HOST=localhost:8081
-export DATASTORE_EMULATOR_HOST_PATH=localhost:8081/datastore
-export DATASTORE_HOST=http://localhost:8081
-# export DATASTORE_PROJECT_ID=inspired-aria-415914
-export DATASTORE_PROJECT_ID=flutterby-64421
