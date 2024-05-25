@@ -31,3 +31,15 @@ vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 -- Jumps
 vim.keymap.set('n', '<C-f>', '<C-f>zz')
 vim.keymap.set('n', '<C-b>', '<C-b>zz')
+
+-- Reload file
+vim.keymap.set('n', '<leader>R', ':e<CR>G')
+
+-- Close all other buffers
+-- global bdelete | edit last buffer | bdelete last buffer which was [No Name]
+vim.keymap.set('n', '<leader>bc', ':%bd | e# | bd# ')
+
+vim.keymap.set('n', '<Up>', '')
+vim.keymap.set('n', '<Down>', '')
+vim.keymap.set('n', '<Left>', '')
+vim.keymap.set('n', '<Right>', '')
