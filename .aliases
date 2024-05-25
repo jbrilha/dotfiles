@@ -31,3 +31,7 @@ alias tnt='tmux new -t'
 alias game='tmux new-window -c ~/Developer/C++/GAME; tmux rename-window GAME'
 alias cgol='tmux new-window -c ~/Developer/C++/CGOL; tmux rename-window CGOL'
 alias rv2='tmux new-window -c ~/Developer/rust/exp; tmux rename-window V2; tmux split-window -h -c "#{pane_current_path}"; tmux split-window -v -c "#{pane_current_path}"; tmux select-pane -t 0; tmux send-keys "nvim src/main.rs" Enter'
+
+# display colors
+
+alias clrs='for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done'
