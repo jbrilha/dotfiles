@@ -4,6 +4,12 @@ return {
 		name = "onedark",
 	},
 	{
+		"scottmckendry/cyberdream.nvim",
+        name = "cyberdream",
+		lazy = false,
+		priority = 1000,
+	},
+	{
 		"catppuccin/nvim",
 		name = "catppuccin",
 

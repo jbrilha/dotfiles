@@ -2,8 +2,10 @@
 vim.g.mapleader = " "
 
 -- Buffers
-vim.keymap.set('n', '<leader>bn', ':bnext<CR>')
-vim.keymap.set('n', '<leader>bp', ':bprev<CR>')
+vim.keymap.set('n', '<leader>bn', ':bnext<CR>', {desc = "Next buffer"})
+vim.keymap.set('n', '<leader>bp', ':bprev<CR>', {desc = "Previous buffer"})
+vim.keymap.set('n', '<leader>bd', ':bdel<CR>', {desc = "Close current buffer"})
+vim.keymap.set('n', '<leader>bca', ':%bd | e# | bd# <CR>', {desc = "Close all other buffers"}) -- global bdelete | edit last buffer | bdelete last buffer which was [No Name]
 
 -- LiveServer
 vim.keymap.set('n', '<leader>ls', ':LiveServerStart<CR>')
@@ -35,11 +37,8 @@ vim.keymap.set('n', '<C-b>', '<C-b>zz')
 -- Reload file
 vim.keymap.set('n', '<leader>R', ':e<CR>G')
 
--- Close all other buffers
--- global bdelete | edit last buffer | bdelete last buffer which was [No Name]
-vim.keymap.set('n', '<leader>bc', ':%bd | e# | bd# ')
 
-vim.keymap.set('n', '<Up>', '')
-vim.keymap.set('n', '<Down>', '')
-vim.keymap.set('n', '<Left>', '')
-vim.keymap.set('n', '<Right>', '')
+-- vim.keymap.set('n', '<Up>', '')
+-- vim.keymap.set('n', '<Down>', '')
+-- vim.keymap.set('n', '<Left>', '')
+-- vim.keymap.set('n', '<Right>', '')
