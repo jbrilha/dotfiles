@@ -23,6 +23,7 @@ config.font = wezterm.font_with_fallback({
 	{ family = "JetBrainsMono Nerd Font", weight = "Medium", scale = 1.0 },
 })
 config.font_size = 14.0
+-- config.unicode_version = 14
 config.window_background_opacity = 0.9
 -- config.text_background_opacity = 0.5
 config.window_decorations = "RESIZE"

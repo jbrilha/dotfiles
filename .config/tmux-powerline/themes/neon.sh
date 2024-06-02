@@ -97,7 +97,7 @@ fi
 if [ -z "$TMUX_POWERLINE_WINDOW_STATUS_FORMAT" ]; then
 	TMUX_POWERLINE_WINDOW_STATUS_FORMAT=(
 		"#[$(format regular)]"
-		"  #I#{?window_flags,#F, } "
+		" #I#{?window_flags,#F, } "
 		"$TMUX_POWERLINE_SEPARATOR_THIN"
 		" #W "
 	)
@@ -170,11 +170,11 @@ if [ -z "$TMUX_POWERLINE_RIGHT_STATUS_SEGMENTS" ]; then
 		# "macos_notification_count 29 255"
 		# "mailcount 9 255"
 		"now_playing terminal $green"
-		"cpu $green CPU"
+		# "cpu $green CPU"
 		# "load $aubergine $black"
 		# "tmux_mem_cpu_load $aubergine $black"
         # 
-        "disk_usage terminal $aubergine $both_disable"
+        # "disk_usage terminal $aubergine $both_disable"
         "tmux_mem_cpu_load $aubergine $black"
         # "uptime $aubergine $black"
 		# "battery $blue $thm_bg"

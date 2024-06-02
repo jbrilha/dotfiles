@@ -213,7 +213,7 @@
 	# Music player to use. Can be any of {audacious, banshee, cmus, apple_music, itunes, lastfm, plexamp, mocp, mpd, mpd_simple, pithos, playerctl, rdio, rhythmbox, spotify, spotify_wine, file}.
 	export TMUX_POWERLINE_SEG_NOW_PLAYING_MUSIC_PLAYER="spotify"
 	# File to be read in case the song is being read from a file
-	export TMUX_POWERLINE_SEG_NOW_PLAYING_FILE_NAME=""
+	export TMUX_POWERLINE_SEG_NOW_PLAYING_FILE_NAME="Waht"
 	# Maximum output length.
 	export TMUX_POWERLINE_SEG_NOW_PLAYING_MAX_LEN="40"
 	# How to handle too long strings. Can be {trim, roll}.
@@ -286,7 +286,36 @@
 # tmux_mem_cpu_load.sh {
 	# Arguments passed to tmux-mem-cpu-load.
 	# See https://github.com/thewtex/tmux-mem-cpu-load for all available options.
-	export TMUX_POWERLINE_SEG_TMUX_MEM_CPU_LOAD_ARGS="-v"
+	export TMUX_POWERLINE_SEG_TMUX_MEM_CPU_LOAD_ARGS="-a 0 -v"
+    #     Available options:
+    # -h, --help
+    #          Prints this help message
+    # -c, --colors
+    #         Use tmux colors in output
+    # -p, --powerline-left
+    #     Use powerline left symbols throughout the output, enables --colors
+    # -q, --powerline-right
+    #     Use powerline right symbols throughout the output, enables --colors
+    # -v, --vertical-graph
+    #     Use vertical bar chart for CPU graph
+    # -l <value>, --segments-left <value>
+    #     Enable blending bg/fg color (depending on -p or -q use) with segment to left
+    #     Provide color to be used depending on -p or -q option for seamless segment blending
+    #     Color is an integer value which uses the standard tmux color palette values
+    # -r <value>, --segments-right <value>
+    #     Enable blending bg/fg color (depending on -p or -q use) with segment to right
+    #     Provide color to be used depending on -p or -q option for seamless segment blending
+    #     Color is an integer value which uses the standard tmux color palette values
+    # -i <value>, --interval <value>
+    #         Set tmux status refresh interval in seconds. Default: 1 second
+    # -g <value>, --graph-lines <value>
+    #         Set how many lines should be drawn in a graph. Default: 10
+    # -m <value>, --mem-mode <value>
+    #       Set memory display mode. 0: Default, 1: Free memory, 2: Usage percent.
+    # -t <value>, --cpu-mode <value>
+    #       Set cpu % display mode. 0: Default max 100%, 1: Max 100% * number of threads.
+    # -a <value>, --averages-count <value>
+    #       Set how many load-averages should be drawn. Default: 3
 # }
 
 # tmux_session_info.sh {
