@@ -3,8 +3,16 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    # selected=$(find ~/Developer ~/OneDrive/UNI/ANO3/SEMESTRE2/*/* -mindepth 1 -maxdepth 1 -type d \( -name "testes" -o -name "teóricas" \) -prune -o -type d -print | fzf)
-selected=$(find ~/Developer ~/OneDrive/UNI/ANO3/SEMESTRE2/*/* -mindepth 1 -maxdepth 1 -type d \( -name "testes" -o -name "teóricas" \) -prune -o -type d -print | fzf)
+
+selected=$(
+    {
+        find ~/.dotfiles -maxdepth 1 -type d \( -name ".git" \) -prune -o -type d -print;
+        find ~/Developer -maxdepth 2 -type d -print;
+        find ~/OneDrive/UNI/ANO3/SEMESTRE2 -mindepth 3 -maxdepth 3 -type d \( -name "testes" -o -name "teóricas" \) -prune -o -type d -print;
+
+
+    } | fzf
+)
 fi
 
 if [[ -z $selected ]]; then

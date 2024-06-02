@@ -31,7 +31,7 @@
 	# The maximum length of the left status bar.
 	export TMUX_POWERLINE_STATUS_LEFT_LENGTH="60"
 	# The maximum length of the right status bar.
-	export TMUX_POWERLINE_STATUS_RIGHT_LENGTH="90"
+	export TMUX_POWERLINE_STATUS_RIGHT_LENGTH="120"
 
 	# The separator to use between windows on the status bar.
 	export TMUX_POWERLINE_WINDOW_STATUS_SEPARATOR=""
@@ -77,7 +77,7 @@
 
 # disk_usage.sh {
 	# Filesystem to retrieve disk space information. Any from the filesystems available (run "df | awk '{print }'" to check them).
-	export TMUX_POWERLINE_SEG_DISK_USAGE_FILESYSTEM="/"
+	export TMUX_POWERLINE_SEG_DISK_USAGE_FILESYSTEM="/dev/disk3s5"
 # }
 
 # earthquake.sh {
@@ -286,7 +286,7 @@
 # tmux_mem_cpu_load.sh {
 	# Arguments passed to tmux-mem-cpu-load.
 	# See https://github.com/thewtex/tmux-mem-cpu-load for all available options.
-	# export TMUX_POWERLINE_SEG_TMUX_MEM_CPU_LOAD_ARGS="-v"
+	export TMUX_POWERLINE_SEG_TMUX_MEM_CPU_LOAD_ARGS="-v"
 # }
 
 # tmux_session_info.sh {

@@ -14,6 +14,7 @@ alias lst='colorls --tree=3'        # file tree DEPTH = 3
 alias lsta='colorls --tree=3 --all'        # file tree DEPTH = 3
 
 alias nconf='nvim ~/.config/nvim/lua'
+alias dots='cd ~/.dotfiles'
 
 # ranger exits to current dir
 alias rng='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
@@ -29,7 +30,7 @@ alias tnt='tmux new -t'
 
 # new tmux window to Game folder -- MUST have a tmux session started already
 alias game='tmux new-window -c ~/Developer/C++/GAME; tmux rename-window GAME'
-alias cgol='tmux new-window -c ~/Developer/C++/CGOL; tmux rename-window CGOL'
+alias cgol='cd ~/Developer/C++/CGOL'
 alias rv2='tmux new-window -c ~/Developer/rust/exp; tmux rename-window V2; tmux split-window -h -c "#{pane_current_path}"; tmux split-window -v -c "#{pane_current_path}"; tmux select-pane -t 0; tmux send-keys "nvim src/main.rs" Enter'
 
 # display colors
