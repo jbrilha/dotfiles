@@ -1,2 +1,4 @@
 .cache/
 compile_commands.json
+plugins/
+!plugins/tmux-mem-cpu-load
