@@ -1,6 +1,5 @@
 .DS_Store
 .cache/
 compile_commands.json
-.tmux/plugins/
-!.tmux/plugins/tmux-mem-cpu-load
-
+.tmux/plugins/*
+!.tmux/plugins/tmux-mem-cpu-load/
