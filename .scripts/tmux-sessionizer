@@ -36,4 +36,20 @@ if ! tmux has-session -t=$selected_name 2> /dev/null; then
     tmux new-session -ds $selected_name -c $selected
 fi
 
-tmux switch-client -t $selected_name
+attached_clients=$(tmux list-clients -t $selected_name 2> /dev/null | wc -l)
+
+if [[ -z $TMUX ]]; then
+    if [ "$attached_clients" -eq 0 ]; then
+        tmux attach-session -t $selected_name
+    else
+        tmux new-session -t $selected_name
+    fi
+else
+    tmux switch-client -t $selected_name
+fi
+
+# if [[ -z $TMUX ]]; then
+#     tmux attach-session -t $selected_name
+# else
+#     tmux switch-client -t $selected_name
+# fi
