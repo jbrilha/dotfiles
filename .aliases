@@ -21,6 +21,7 @@ alias rng='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; 
 
 # git aliases
 alias gs='git status'
+alias gch='git checkout'
 
 alias ff='fastfetch'
 # start tmux with fastfetch
