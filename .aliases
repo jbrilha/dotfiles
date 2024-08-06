@@ -1,5 +1,7 @@
 alias py='python3'
 
+alias lg='lazygit'
+
 alias ls='colorls'                  # no flags
 alias ls1='colorls -1'              # 1 entry per line
 alias lsd='colorls --dirs'          # [-d] dirs only

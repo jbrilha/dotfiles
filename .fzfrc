@@ -2,6 +2,7 @@
 --color=hl:#00ff00,hl+:#ff8800,info:#ff00ff,marker:#00ffff
 --color=prompt:#00ff00,spinner:#ff0000,pointer:#ffdd00,header:#87afaf
 --color=border:#262626,label:#aeaeae,query:#d9d9d9
+--color=bg+:#202020
 --border="rounded"
 --border-label=""
 --preview-window="border-rounded"

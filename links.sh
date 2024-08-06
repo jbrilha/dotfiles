@@ -10,5 +10,6 @@ ln -s ~/.dotfiles/.tmux.conf ~/
 ln -s ~/.dotfiles/.tmux ~/
 ln -s ~/.dotfiles/.wezterm.lua ~/
 ln -s ~/.dotfiles/.p10k.zsh ~/
+ln -s ~/.dotfiles/.gitconfig ~/
 
 sudo ln -s ~/.scripts/* /usr/local/bin/
