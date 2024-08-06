@@ -1,0 +1,14 @@
+#!/bin/zsh
+
+minutes=""
+vis="private"
+
+
+if [[ -z "$1" ]]; then
+    echo "Usage: $0 minutes"
+    exit 1
+fi
+
+minutes="$1"
+
+sudo shutdown -h +$minutes
