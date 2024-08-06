@@ -1,5 +1,5 @@
 return {
-	"https://github.com/stevearc/oil.nvim",
+	"stevearc/oil.nvim",
 	config = function()
 		require("oil").setup({
 			-- Oil will take over directory buffers (e.g. `vim .` or `:e src/`)
@@ -84,7 +84,7 @@ return {
 			use_default_keymaps = true,
 			view_options = {
 				-- Show files and directories that start with "."
-				show_hidden = false,
+				show_hidden = true,
 				-- This function defines what is considered a "hidden" file
 				is_hidden_file = function(name, bufnr)
 					return vim.startswith(name, ".")
@@ -164,4 +164,6 @@ return {
 			},
 		})
 	end,
+
+	vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" }),
 }
