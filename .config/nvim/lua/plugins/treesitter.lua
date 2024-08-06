@@ -9,7 +9,7 @@ return {
 					"c", "cpp", "java", "lua", "vim", "vimdoc",
 					"python", "javascript", "css", "dockerfile",
 					"json", "html", "latex", "markdown", "markdown_inline",
-					"ruby", "rust", "xml", "yaml",
+					"ruby", "rust", "xml", "yaml", "go", "templ"
 				},
 				auto_install = true,
 				highlight = { enable = true },
