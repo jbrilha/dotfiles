@@ -4,6 +4,7 @@ return {
 	dependencies = {
 		"williamboman/mason.nvim",
 		"nvimtools/none-ls.nvim",
+		-- "nvimtools/none-ls-extras.nvim",
 	},
 	config = function()
 		require("mason").setup()
@@ -16,6 +17,7 @@ return {
 				"black",
 				"isort",
 				"clang_format",
+				-- "eslint_lsp",
 				-- "eslint_d",
 				-- "flake8",
 			},
@@ -29,6 +31,7 @@ return {
 		})
 
 		null_ls.setup({
+            -- debug = true,
 			sources = {
 				null_ls.builtins.formatting.prettier,
 				null_ls.builtins.formatting.black,
@@ -39,7 +42,16 @@ return {
 						-- Alternatively, place .clang.format in ~/ and delete everything after -style=file
 					},
 				}),
-				-- null_ls.builtins.diagnostics.eslint_d,
+				-- null_ls.builtins.formatting.gofumpt,
+				-- null_ls.builtins.formatting.goimports_reviser,
+				-- null_ls.builtins.formatting.golines,
+				null_ls.builtins.formatting.golines.with({
+                    extra_args = {
+                        "--no-chain-split-dots"
+                    }
+                }),
+                -- require("none-ls.diagnostics.eslint"),
+				-- null_ls.builtins.diagnostics.eslint,
 				-- null_ls.builtins.diagnostics.flake8,
 				-- null_ls.builtins.completion.spell,
 			},

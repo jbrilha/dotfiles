@@ -35,7 +35,7 @@ return {
 					"pylsp", "clangd", "cmake", "lemminx", "jdtls", "jsonls",
 					"dockerls", "html", "tsserver", "eslint", "texlab",
 					"lua_ls", "marksman", "rust_analyzer", "glsl_analyzer",
-                    "gopls", "templ", "cssls", "tailwindcss"
+					"gopls", "templ", "cssls", "tailwindcss"
 				},
 				automatic_installation = true,
 			})
@@ -49,7 +49,19 @@ return {
 			capabilities = capabilities
 
 			local lspconfig = require("lspconfig")
-			lspconfig.tsserver.setup({ capabilities = capabilities })
+			lspconfig.tsserver.setup({
+				capabilities = capabilities,
+				root_dir = function()
+					return vim.loop.cwd()
+				end,
+				settings = {
+					javascript = {
+						format = {
+							enable = true,
+						},
+					},
+				},
+			})
 			lspconfig.lemminx.setup({
 				capabilities = capabilities,
 				settings = {
@@ -71,7 +83,15 @@ return {
 			lspconfig.dockerls.setup({ capabilities = capabilities })
 			lspconfig.html.setup({ capabilities = capabilities })
 			lspconfig.cmake.setup({ capabilities = capabilities })
-			lspconfig.eslint.setup({ capabilities = capabilities })
+			-- lspconfig.eslint.setup({
+			-- 	capabilities = capabilities,
+			-- 	settings = {
+			-- 		experimental = {
+			-- 			-- allows using flat config format
+			-- 			useFlatConfig = true,
+			-- 		},
+			-- 	},
+			-- })
 			lspconfig.texlab.setup({ capabilities = capabilities })
 			lspconfig.lua_ls.setup({ capabilities = capabilities })
 			lspconfig.marksman.setup({ capabilities = capabilities })
@@ -79,7 +99,14 @@ return {
 			lspconfig.glsl_analyzer.setup({ capabilities = capabilities })
 			lspconfig.jdtls.setup({ capabilities = capabilities })
 			lspconfig.jsonls.setup({ capabilities = capabilities })
-			lspconfig.gopls.setup({ capabilities = capabilities })
+			lspconfig.gopls.setup({
+				capabilities = capabilities,
+				-- settings = {
+				-- 	gopls = {
+				-- 		usePlaceholders = true,
+				-- 	},
+				-- },
+			})
 			lspconfig.templ.setup({ capabilities = capabilities })
 			-- lspconfig.cssls.setup({ capabilities = capabilities })
 			lspconfig.tailwindcss.setup({ capabilities = capabilities })
