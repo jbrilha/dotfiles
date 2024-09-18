@@ -29,3 +29,10 @@ vim.keymap.set('n', '<C-b>', '<C-b>zz')
 -- Reload file
 vim.keymap.set('n', '<leader>R', ':e<CR>G', {desc = "Refresh buffer and jump to EOF"})
 vim.keymap.set('n', '<leader>r', ':e<CR>', {desc = "Refresh buffer"})
+
+-- Quickfix/Location lists
+vim.keymap.set("n", "<leader>k", "<cmd>cnext<CR>zz")
+vim.keymap.set("n", "<leader>j", "<cmd>cprev<CR>zz")
+
+-- vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
+-- vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
