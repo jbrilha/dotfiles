@@ -8,7 +8,7 @@ selected=$(
     {
         find ~/.dotfiles \
             ~/Developer \
-            ~/OneDrive/UNI/ANO3/SEMESTRE2/* \
+            ~/OneDrive/UNI/MEI/YEAR_1/SEM_1/* \
             \( \
                 -name ".git" -o \
                 -name "flutter" -o \
