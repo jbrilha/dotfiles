@@ -1,0 +1,19 @@
+#!/bin/zsh
+
+owner="jbrilha"
+
+if [[ -z "$1" || -z "$2" ]]; then
+    echo "Usage: $(basename "$0") repo collaborator [permission]"
+    exit 1
+fi
+
+repo="$1"
+collaborator="$2"
+permission="${3:-triage}"
+
+gh api \
+  --method PUT \
+  -H "Accept: application/vnd.github+json" \
+  -H "X-GitHub-Api-Version: 2022-11-28" \
+  /repos/$owner/$repo/collaborators/$collaborator \
+   -f "permission=$permission"
