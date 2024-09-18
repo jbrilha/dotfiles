@@ -15,7 +15,7 @@ alias lsT='colorls --tree'          # file tree MAXDEPTH
 alias lst='colorls --tree=3'        # file tree DEPTH = 3
 alias lsta='colorls --tree=3 --all'        # file tree DEPTH = 3
 
-alias nconf='nvim ~/.config/nvim/lua'
+alias nconf='cd ~/.config/nvim/lua; nvim .; cd -'
 alias dots='cd ~/.dotfiles'
 
 # ranger exits to current dir
