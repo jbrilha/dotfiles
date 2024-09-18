@@ -2,6 +2,15 @@ local wezterm = require("wezterm")
 
 local config = {}
 
+local wezterm = require 'wezterm'
+local mux = wezterm.mux
+
+wezterm.on('gui-startup', function(window)
+  local tab, pane, window = mux.spawn_window(cmd or {})
+  local gui_window = window:gui_window();
+  gui_window:perform_action(wezterm.action.ToggleFullScreen, pane)
+end)
+
 local color_schemes = {
 	["Custom (Dark)"] = {
 		foreground = "#ffffff",
@@ -113,5 +122,12 @@ config.window_background_opacity = 0.9
 config.window_decorations = "RESIZE"
 
 config.enable_tab_bar = false
+
+-- need these for left shift + opt combination (aka to use {} "from the left")
+config.send_composed_key_when_left_alt_is_pressed = true
+config.send_composed_key_when_right_alt_is_pressed = true
+
+-- no more "confirming" tilde
+config.use_dead_keys = false
 
 return config
