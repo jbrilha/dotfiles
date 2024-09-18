@@ -1,11 +1,7 @@
 #!/bin/zsh
 
-branch_name=""
-vis="private"
-
-
 if [[ -z "$1" ]]; then
-    echo "Usage: $0 branch_name"
+    echo "Usage: $$(basename "$0") branch_name"
     exit 1
 fi
 
