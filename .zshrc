@@ -85,8 +85,6 @@ plugins=(git zsh-syntax-highlighting zsh-autosuggestions web-search)
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # SOURCES
-source $(dirname $(gem which colorls))/tab_complete.sh
-
 source $ZSH/oh-my-zsh.sh
 
 # KEYBINDS
@@ -103,6 +101,5 @@ fi
 if [ -f ~/.exports ]; then
     source ~/.exports
 fi
-
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
