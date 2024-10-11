@@ -58,7 +58,7 @@ format() {
 
 	case $type in
 	inverse)
-		echo "fg=$bg_color,bg=$fg_color,nobold,noitalics,nounderscore"
+		echo "fg=$black,bg=$fg_color,nobold,noitalics,nounderscore"
 		;;
 	regular)
 		echo "fg=$fg_color,bg=$bg_color,nobold,noitalics,nounderscore"
