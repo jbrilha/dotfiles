@@ -10,7 +10,11 @@ vis="${2:-private}"
 
 
 gh repo create "$repo_name" --"$vis"
-echo "# $repo_name" >> README.md
+
+if ! test -f ./README.md; then
+    echo "# $repo_name" >> README.md
+fi
+
 git init
 git add .
 git commit -m "Initial commit"

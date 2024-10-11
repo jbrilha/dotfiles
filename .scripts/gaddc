@@ -9,7 +9,7 @@ fi
 
 repo="$1"
 collaborator="$2"
-permission="${3:-triage}"
+permission="${3:-admin}"
 
 gh api \
   --method PUT \
