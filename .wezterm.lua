@@ -1,15 +1,18 @@
-local wezterm = require("wezterm")
-
 local config = {}
 
-local wezterm = require 'wezterm'
+local wezterm = require("wezterm")
 local mux = wezterm.mux
 
-wezterm.on('gui-startup', function(window)
-  local tab, pane, window = mux.spawn_window(cmd or {})
-  local gui_window = window:gui_window();
-  gui_window:perform_action(wezterm.action.ToggleFullScreen, pane)
+wezterm.on('gui-startup', function()
+  local _, _, window = mux.spawn_window({})
+  window:gui_window():maximize()
 end)
+
+-- wezterm.on('gui-startup', function(window)
+--   local tab, pane, window = mux.spawn_window(cmd or {})
+--   local gui_window = window:gui_window();
+--   gui_window:perform_action(wezterm.action.ToggleFullScreen, pane)
+-- end)
 
 local color_schemes = {
 	["Custom (Dark)"] = {
