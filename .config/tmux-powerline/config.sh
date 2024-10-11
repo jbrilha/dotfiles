@@ -187,21 +187,22 @@
 	# Whether the normal & prefix mode section should be enabled. Should be {"true, "false"}.
 	export TMUX_POWERLINE_SEG_MODE_INDICATOR_NORMAL_AND_PREFIX_MODE_ENABLED="true"
 	# Normal mode text & color overrides. Defaults to "normal" & the segment foreground color set in the theme used.
-	export TMUX_POWERLINE_SEG_MODE_INDICATOR_NORMAL_MODE_TEXT="normal"
-	export TMUX_POWERLINE_SEG_MODE_INDICATOR_NORMAL_MODE_TEXT_COLOR=""
+	export TMUX_POWERLINE_SEG_MODE_INDICATOR_NORMAL_MODE_TEXT="N"
+	export TMUX_POWERLINE_SEG_MODE_INDICATOR_NORMAL_MODE_TEXT_COLOR="#ff0040"
+
 	# Prefix mode text & color overrides. Defaults to "prefix" & the segment foreground color set in the theme used.
-	export TMUX_POWERLINE_SEG_MODE_INDICATOR_PREFIX_MODE_TEXT="prefix"
-	export TMUX_POWERLINE_SEG_MODE_INDICATOR_PREFIX_MODE_TEXT_COLOR=""
+	export TMUX_POWERLINE_SEG_MODE_INDICATOR_PREFIX_MODE_TEXT="P"
+	export TMUX_POWERLINE_SEG_MODE_INDICATOR_PREFIX_MODE_TEXT_COLOR="#ff8800"
 	# Whether the mouse mode section should be enabled. Should be {"true, "false"}.
-	export TMUX_POWERLINE_SEG_MODE_INDICATOR_MOUSE_MODE_ENABLED="true"
+	export TMUX_POWERLINE_SEG_MODE_INDICATOR_MOUSE_MODE_ENABLED="false"
 	# Mouse mode text & color overrides. Defaults to "mouse" & the segment foreground color set in the theme used.
 	export TMUX_POWERLINE_SEG_MODE_INDICATOR_MOUSE_MODE_TEXT="mouse"
 	export TMUX_POWERLINE_SEG_MODE_INDICATOR_MOUSE_MODE_TEXT_COLOR=""
 	# Whether the copy mode section should be enabled. Should be {"true, "false"}.
 	export TMUX_POWERLINE_SEG_MODE_INDICATOR_COPY_MODE_ENABLED="true"
 	# Copy mode text & color overrides. Defaults to "copy" & the segment foreground color set in the theme used.
-	export TMUX_POWERLINE_SEG_MODE_INDICATOR_COPY_MODE_TEXT="copy"
-	export TMUX_POWERLINE_SEG_MODE_INDICATOR_COPY_MODE_TEXT_COLOR=""
+	export TMUX_POWERLINE_SEG_MODE_INDICATOR_COPY_MODE_TEXT="V"
+	export TMUX_POWERLINE_SEG_MODE_INDICATOR_COPY_MODE_TEXT_COLOR="#ffdd00"
 	# Suspend mode text & color overrides. Defaults to "SUSPEND" & the segment foreground color set in the theme used.
 	export TMUX_POWERLINE_SEG_MODE_INDICATOR_SUSPEND_MODE_TEXT="SUSPEND"
 	export TMUX_POWERLINE_SEG_MODE_INDICATOR_SUSPEND_MODE_TEXT_COLOR=""
