@@ -33,9 +33,9 @@ return {
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"pylsp", "clangd", "cmake", "lemminx", "jdtls", "jsonls",
-					"dockerls", "html", "tsserver", "eslint", "texlab",
+					"dockerls", "html", "ts_ls", "eslint", "texlab",
 					"lua_ls", "marksman", "rust_analyzer", "glsl_analyzer",
-					"gopls", "templ", "cssls", "tailwindcss"
+					"gopls", "templ", "cssls", "tailwindcss", "ltex"
 				},
 				automatic_installation = true,
 			})
@@ -49,7 +49,7 @@ return {
 			capabilities = capabilities
 
 			local lspconfig = require("lspconfig")
-			lspconfig.tsserver.setup({
+			lspconfig.ts_ls.setup({
 				capabilities = capabilities,
 				root_dir = function()
 					return vim.loop.cwd()
@@ -92,7 +92,8 @@ return {
 			-- 		},
 			-- 	},
 			-- })
-			lspconfig.texlab.setup({ capabilities = capabilities })
+			lspconfig.ltex.setup({ capabilities = capabilities })
+			-- lspconfig.texlab.setup({ capabilities = capabilities })
 			lspconfig.lua_ls.setup({ capabilities = capabilities })
 			lspconfig.marksman.setup({ capabilities = capabilities })
 			lspconfig.rust_analyzer.setup({ capabilities = capabilities })
@@ -109,7 +110,9 @@ return {
 			})
 			lspconfig.templ.setup({ capabilities = capabilities })
 			-- lspconfig.cssls.setup({ capabilities = capabilities })
-			lspconfig.tailwindcss.setup({ capabilities = capabilities })
+
+            -- This makes wezterm ask for permissions everytime
+			-- lspconfig.tailwindcss.setup({ capabilities = capabilities })
 
 			-- Use LspAttach autocommand to only map the following keys
 			-- after the language server attaches to the current buffer

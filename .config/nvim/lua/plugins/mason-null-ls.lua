@@ -17,6 +17,7 @@ return {
 				"black",
 				"isort",
 				"clang_format",
+                -- "latexindent",
 				-- "eslint_lsp",
 				-- "eslint_d",
 				-- "flake8",
@@ -33,6 +34,8 @@ return {
 		null_ls.setup({
             -- debug = true,
 			sources = {
+                -- This fucks up my markdown formatting??
+				-- null_ls.builtins.formatting.latexindent,
 				null_ls.builtins.formatting.prettier,
 				null_ls.builtins.formatting.black,
 				null_ls.builtins.formatting.isort,

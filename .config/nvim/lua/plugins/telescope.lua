@@ -31,7 +31,12 @@ return {
 				pickers = {
 					find_files = {
 						no_ignore = true,
-                        hidden = true,
+						hidden = true,
+					},
+					live_grep = {
+						additional_args = function(opts)
+							return { "--hidden" }
+						end,
 					},
 				},
 				extensions = {
