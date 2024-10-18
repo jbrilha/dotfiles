@@ -1,3 +1,5 @@
+export EDITOR=nvim
+
 n ()
 {
     # Block nesting of nnn in subshells
