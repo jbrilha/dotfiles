@@ -1,5 +1,3 @@
-local vim = vim
-
 -- General
 vim.g.mapleader = " "
 

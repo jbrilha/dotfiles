@@ -1,7 +1,5 @@
-require("config.options")
-require("config.keymaps")
-
-require("config.lazy")
+require("config")
+require("snippets")
 
 -- vim.cmd.colorscheme("neon")
 vim.cmd.colorscheme("catppuccin-mocha")
