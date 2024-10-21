@@ -6,4 +6,6 @@ vim.cmd("set number relativenumber")
 vim.cmd("set cursorline")
 vim.opt.termguicolors = true
 vim.opt.colorcolumn = "80"
+vim.opt.splitright = true
+vim.opt.splitbelow = true
 vim.o.undofile = true
