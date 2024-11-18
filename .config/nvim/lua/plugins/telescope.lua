@@ -17,6 +17,7 @@ return {
 			local telescope = require("telescope")
 			telescope.setup({
 				defaults = {
+					file_ignore_patterns = { ".class", ".git/", "target/", "_templ.go" },
 					-- Default configuration for telescope goes here:
 					-- config_key = value,
 					mappings = {

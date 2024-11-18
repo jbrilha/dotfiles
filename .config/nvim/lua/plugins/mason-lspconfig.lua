@@ -32,10 +32,26 @@ return {
 		config = function()
 			require("mason-lspconfig").setup({
 				ensure_installed = {
-					"pylsp", "clangd", "cmake", "lemminx", "jdtls", "jsonls",
-					"dockerls", "html", "ts_ls", "eslint", "texlab",
-					"lua_ls", "marksman", "rust_analyzer", "glsl_analyzer",
-					"gopls", "templ", "cssls", "tailwindcss", "ltex"
+					"pylsp",
+					"clangd",
+					"cmake",
+					"lemminx",
+					"jdtls",
+					"jsonls",
+					"dockerls",
+					"html",
+					"ts_ls",
+					"eslint",
+					"texlab",
+					"lua_ls",
+					"marksman",
+					"rust_analyzer",
+					"glsl_analyzer",
+					"gopls",
+					"templ",
+					"cssls",
+					"tailwindcss",
+					"ltex",
 				},
 				automatic_installation = true,
 			})
@@ -98,7 +114,18 @@ return {
 			lspconfig.marksman.setup({ capabilities = capabilities })
 			lspconfig.rust_analyzer.setup({ capabilities = capabilities })
 			lspconfig.glsl_analyzer.setup({ capabilities = capabilities })
-			lspconfig.jdtls.setup({ capabilities = capabilities })
+			lspconfig.jdtls.setup({
+				capabilities = capabilities,
+				settings = {
+					java = {
+						project = {
+							referencedLibraries = {
+								"libs/*.jar",
+							},
+						},
+					},
+				},
+			})
 			lspconfig.jsonls.setup({ capabilities = capabilities })
 			lspconfig.gopls.setup({
 				capabilities = capabilities,
@@ -111,7 +138,7 @@ return {
 			lspconfig.templ.setup({ capabilities = capabilities })
 			-- lspconfig.cssls.setup({ capabilities = capabilities })
 
-            -- This makes wezterm ask for permissions everytime
+			-- This makes wezterm ask for permissions everytime
 			-- lspconfig.tailwindcss.setup({ capabilities = capabilities })
 
 			-- Use LspAttach autocommand to only map the following keys
