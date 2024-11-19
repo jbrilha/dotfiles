@@ -34,14 +34,6 @@ n ()
 export NNN_FIFO=/tmp/nnn.fifo
 export NNN_PLUG='p:preview-tui;'
 
-export PATH="$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH"
-source $(dirname $(gem which colorls))/tab_complete.sh
-
-export JAVA_HOME=$(/usr/libexec/java_home)
-# export JAVA_HOME=$(/usr/libexec/java_home -v 11)
-
-export PATH=/Users/joaobrilha/apache/apache-maven-3.9.6/bin:$PATH
-
 export PATH=$(go env GOPATH)/bin/:$PATH
 
 export FZF_DEFAULT_OPTS_FILE=~/.fzfrc
