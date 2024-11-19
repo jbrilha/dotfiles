@@ -8,11 +8,18 @@ fi
 repo_name="$1"
 vis="${2:-private}"
 
+if [ "$2" = "P" ] | [ "$2" = "-P" ]; then
+    vis="public"
+fi
 
 gh repo create "$repo_name" --"$vis"
 
 if ! test -f ./README.md; then
     echo "# $repo_name" >> README.md
+fi
+
+if ! test -f ./.gitignore; then
+    echo ".DS_Store" >> .gitignore
 fi
 
 git init
