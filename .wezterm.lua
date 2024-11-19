@@ -3,9 +3,19 @@ local config = {}
 local wezterm = require("wezterm")
 local mux = wezterm.mux
 
-wezterm.on('gui-startup', function()
-  local _, _, window = mux.spawn_window({})
-  window:gui_window():maximize()
+wezterm.on("gui-startup", function()
+	local _, _, window = mux.spawn_window({})
+	window:gui_window():maximize()
+end)
+
+wezterm.on("toggle-opacity", function(window, pane)
+	local overrides = window:get_config_overrides() or {}
+	if not overrides.window_background_opacity then
+		overrides.window_background_opacity = 0.5
+	else
+		overrides.window_background_opacity = nil
+	end
+	window:set_config_overrides(overrides)
 end)
 
 -- wezterm.on('gui-startup', function(window)
@@ -98,22 +108,6 @@ end
 config.color_schemes = color_schemes
 config.color_scheme = "Custom (Dark)"
 
--- config.color_scheme = 'Argonaut (Gogh)'
--- config.color_scheme = "Campbell (Gogh)"
--- config.color_scheme = 'Colors (base16)'
--- config.color_scheme = "Dark Pastel (Gogh)"
--- config.color_scheme = 'Dark+'
--- config.color_scheme = 'Dissonance (Gogh)'
--- config.color_scheme = 'Dracula (Gogh)'
--- config.color_scheme = 'Ef-Duo-Dark'
--- config.color_scheme = "Ef-Symbiosis"
--- config.color_scheme = 'Ef-Winter'
--- config.color_scheme = 'Elementary'
--- config.color_scheme = 'Elementary (Gogh)'
--- config.color_scheme = 'farmhouse-dark'
--- config.color_scheme = 'FirefoxDev'
--- config.color_scheme = 'Framer'
-
 config.font = wezterm.font_with_fallback({
 	{ family = "JetBrainsMono Nerd Font", weight = "Medium", scale = 1.0 },
 })
@@ -132,5 +126,16 @@ config.send_composed_key_when_right_alt_is_pressed = true
 
 -- no more "confirming" tilde
 config.use_dead_keys = false
+
+config.keys = {
+	{
+		key = "0",
+		mods = "CTRL",
+		action = wezterm.action.EmitEvent("toggle-opacity"),
+	},
+}
+
+-- turn off ligatures
+config.harfbuzz_features = {"calt=0"}
 
 return config
