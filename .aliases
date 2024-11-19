@@ -2,18 +2,22 @@ alias py='python3'
 
 alias lg='lazygit'
 
-alias ls='colorls'                  # no flags
-alias ls1='colorls -1'              # 1 entry per line
-alias lsd='colorls --dirs'          # [-d] dirs only
-alias lsf='colorls --files'         # [-f] files only
-alias lsdf='colorls --sort-dirs'    # [-sd] dirs then files
-alias lsfd='colorls --sort-files'    # [-f] files then dirs
-alias lsl='colorls --long'          # [-l] long listing
-alias lsa='colorls --all'           # [-a] lists all 
-alias lsA='colorls --almost-all'    # [-A] lists all except ./ and ../
-alias lsT='colorls --tree'          # file tree MAXDEPTH
-alias lst='colorls --tree=3'        # file tree DEPTH = 3
-alias lsta='colorls --tree=3 --all'        # file tree DEPTH = 3
+alias cd..="cd .."
+
+alias ls='eza'                              # no flags
+alias ls1='eza -1'                          # 1 entry per line
+alias lsa1='eza -1 --all'                   # 1 entry per line
+alias lsd='eza --only-dirs'                 # [-d] dirs only
+alias lsf='eza --only-files'                # [-f] files only
+alias lsdf='eza --sort=type'                # [-sd] dirs then files
+alias lsfd='eza --sort=type -r'             # [-f] files then dirs
+alias lsl='eza --long'                      # [-l] long listing
+alias lsla='eza --long --all'               # [-l] long listing [-a] all
+alias lsa='eza --all'                       # [-a] lists all 
+alias lsA='eza --almost-all'                # [-A] lists all except ./ and ../
+alias lsT='eza --tree'                      # file tree MAXDEPTH
+alias lst='eza --tree --level=3'            # file tree DEPTH = 3
+alias lsta='eza --tree --level=3 --all'     # file tree DEPTH = 3
 
 alias nconf='cd ~/.config/nvim/lua; nvim .; cd -'
 alias dots='cd ~/.dotfiles'
