@@ -1,12 +1,15 @@
 return {
 	{
 		"williamboman/mason.nvim",
+		event = "VeryLazy",
 		config = function()
 			require("mason").setup({})
 		end,
 	},
 	{
 		"nvim-java/nvim-java",
+		lazy = true,
+		ft = "java",
 		dependencies = {
 			"nvim-java/lua-async-await",
 			"nvim-java/nvim-java-core",
@@ -29,6 +32,7 @@ return {
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
+		event = "VeryLazy",
 		config = function()
 			require("mason-lspconfig").setup({
 				ensure_installed = {
@@ -59,6 +63,7 @@ return {
 	},
 	{
 		"neovim/nvim-lspconfig",
+		event = "VeryLazy",
 		config = function()
 			local vim = vim
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -119,6 +124,7 @@ return {
 				settings = {
 					java = {
 						project = {
+							sourcePaths = { "src/main/java", "src" },
 							referencedLibraries = {
 								"libs/*.jar",
 							},
@@ -136,6 +142,7 @@ return {
 				-- },
 			})
 			lspconfig.templ.setup({ capabilities = capabilities })
+			lspconfig.ocamllsp.setup({ capabilities = capabilities })
 			-- lspconfig.cssls.setup({ capabilities = capabilities })
 
 			-- This makes wezterm ask for permissions everytime

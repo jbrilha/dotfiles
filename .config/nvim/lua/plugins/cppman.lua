@@ -1,5 +1,7 @@
 return {
 	"madskjeldgaard/cppman.nvim",
+    lazy = true,
+    ft = "cpp",
 	dependencies = {
 		{ "MunifTanjim/nui.nvim" },
 	},

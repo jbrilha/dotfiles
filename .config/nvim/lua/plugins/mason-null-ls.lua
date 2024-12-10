@@ -1,6 +1,6 @@
 return {
 	"jay-babu/mason-null-ls.nvim",
-	event = { "BufReadPre", "BufNewFile" },
+	event = { "VeryLazy", "BufReadPre", "BufNewFile" },
 	dependencies = {
 		"williamboman/mason.nvim",
 		"nvimtools/none-ls.nvim",
@@ -36,6 +36,7 @@ return {
 			sources = {
                 -- This fucks up my markdown formatting??
 				-- null_ls.builtins.formatting.latexindent,
+				null_ls.builtins.formatting.ocamlformat,
 				null_ls.builtins.formatting.prettier,
 				null_ls.builtins.formatting.black,
 				null_ls.builtins.formatting.isort,

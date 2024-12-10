@@ -34,6 +34,7 @@ return {
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
+		event = "VeryLazy",
 
 		opts = {
 			transparent_background = true,
@@ -89,66 +90,68 @@ return {
 	},
 	{
 		"uloco/bluloco.nvim",
-		lazy = false,
-		priority = 1000,
+		event = "VeryLazy",
+		-- 	-- lazy = true,
+		-- 	priority = 1000,
 		dependencies = { "rktjmp/lush.nvim" },
 		config = function()
 			require("bluloco").setup({
-				style = "dark", -- "auto" | "dark" | "light"
-				transparent = true,
-				italics = true,
-				terminal = vim.fn.has("gui_running") == 1, -- bluoco colors are enabled in gui terminals per default.
-				guicursor = true,
+				-- 			style = "dark", -- "auto" | "dark" | "light"
+				-- 			transparent = true,
+				-- 			italics = true,
+				-- 			terminal = vim.fn.has("gui_running") == 1, -- bluoco colors are enabled in gui terminals per default.
+				-- 			guicursor = true,
 			}) -- your optional config goes here, see below.
 		end,
 	},
-	{
-		"navarasu/onedark.nvim",
-		name = "onedark",
-	},
-	{
-		"scottmckendry/cyberdream.nvim",
-		name = "cyberdream",
-		lazy = false,
-		priority = 1000,
-		opts = {
-			-- Enable transparent background
-			transparent = true,
-
-			-- Enable italics comments
-			italic_comments = true,
-
-			-- Replace all fillchars with ' ' for the ultimate clean look
-			hide_fillchars = false,
-
-			-- Modern borderless telescope theme
-			borderless_telescope = false,
-
-			-- Set terminal colors used in `:terminal`
-			terminal_colors = true,
-
-			theme = {
-				variant = "default",
-				highlights = {
-					-- See `:h highlight-groups` for a list of highlight groups or run `:hi` to see all groups and their current values
-
-					-- Example:
-					Comment = { fg = "#004400", bg = "NONE", italic = true },
-					["@property"] = { fg = "#ff0040", bold = true },
-
-					-- Complete list can be found in `lua/cyberdream/theme.lua`
-				},
-			},
-
-			-- Disable or enable colorscheme extensions
-			extensions = {
-				telescope = true,
-				notify = true,
-				mini = true,
-				...,
-			},
-		},
-	},
+	-- {
+	-- 	"navarasu/onedark.nvim",
+	-- 	name = "onedark",
+	--        lazy = true
+	-- },
+	-- {
+	-- 	"scottmckendry/cyberdream.nvim",
+	-- 	name = "cyberdream",
+	-- 	lazy = true,
+	-- 	priority = 1000,
+	-- 	opts = {
+	-- 		-- Enable transparent background
+	-- 		transparent = true,
+	--
+	-- 		-- Enable italics comments
+	-- 		italic_comments = true,
+	--
+	-- 		-- Replace all fillchars with ' ' for the ultimate clean look
+	-- 		hide_fillchars = false,
+	--
+	-- 		-- Modern borderless telescope theme
+	-- 		borderless_telescope = false,
+	--
+	-- 		-- Set terminal colors used in `:terminal`
+	-- 		terminal_colors = true,
+	--
+	-- 		theme = {
+	-- 			variant = "default",
+	-- 			highlights = {
+	-- 				-- See `:h highlight-groups` for a list of highlight groups or run `:hi` to see all groups and their current values
+	--
+	-- 				-- Example:
+	-- 				Comment = { fg = "#004400", bg = "NONE", italic = true },
+	-- 				["@property"] = { fg = "#ff0040", bold = true },
+	--
+	-- 				-- Complete list can be found in `lua/cyberdream/theme.lua`
+	-- 			},
+	-- 		},
+	--
+	-- 		-- Disable or enable colorscheme extensions
+	-- 		extensions = {
+	-- 			telescope = true,
+	-- 			notify = true,
+	-- 			mini = true,
+	-- 			...,
+	-- 		},
+	-- 	},
+	-- },
 }
 
 --[[ local colors64 = {

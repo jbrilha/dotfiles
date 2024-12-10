@@ -1,8 +1,17 @@
 return {
 	{
 		"nvim-telescope/telescope.nvim",
+		event = "VeryLazy",
 		tag = "0.1.8",
-		dependencies = { "nvim-lua/plenary.nvim", "sharkdp/fd", "BurntSushi/ripgrep" },
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"sharkdp/fd",
+			"BurntSushi/ripgrep",
+			{
+				"nvim-telescope/telescope-fzf-native.nvim",
+				build = "make",
+			},
+		},
 		config = function()
 			local builtin = require("telescope.builtin")
 			vim.keymap.set("n", "<leader>ff", builtin.find_files)
@@ -17,7 +26,7 @@ return {
 			local telescope = require("telescope")
 			telescope.setup({
 				defaults = {
-					file_ignore_patterns = { ".class", ".git/", "target/", "_templ.go" },
+					file_ignore_patterns = { ".class", ".git/", "target/", "_templ.go", ".dat" },
 					-- Default configuration for telescope goes here:
 					-- config_key = value,
 					mappings = {
