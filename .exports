@@ -35,5 +35,6 @@ export NNN_FIFO=/tmp/nnn.fifo
 export NNN_PLUG='p:preview-tui;'
 
 export PATH=$(go env GOPATH)/bin/:$PATH
+export PATH=$(opam var bin):$PATH
 
 export FZF_DEFAULT_OPTS_FILE=~/.fzfrc
