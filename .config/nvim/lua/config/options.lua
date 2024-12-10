@@ -9,3 +9,7 @@ vim.opt.colorcolumn = "80"
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.o.undofile = true
+
+vim.diagnostic.config({
+    severity_sort = true,
+})
