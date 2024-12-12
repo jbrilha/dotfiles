@@ -49,7 +49,7 @@ local M = {}
         }
     end
 
-return {
+local lualine = {
     "nvim-lualine/lualine.nvim",
 
     config = function()
@@ -110,3 +110,6 @@ return {
         })
     end
 }
+
+return {}
+-- return lualine
