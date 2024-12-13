@@ -30,8 +30,9 @@ local heirline = {
 			normal = "#ff0040",
 			insert = "#88ff00",
 			visual = "#ffdd00",
-			replace = "#8800ff",
+			replace = "#ff00ff",
 			command = "#ff8800",
+			terminal = "#00ffff",
 
 			bright_bg = utils.get_highlight("Folded").bg,
 			bright_fg = utils.get_highlight("Folded").fg,
@@ -104,7 +105,7 @@ local heirline = {
 					rm = "M",
 					["r?"] = "?",
 					["!"] = "!",
-					t = "T",
+					t = "TERMINAL",
 				},
 			},
 			-- We can now access the value of mode() that, by now, would have been
@@ -222,9 +223,9 @@ local heirline = {
 
 			init = function(self)
 				self.status_dict = vim.b.gitsigns_status_dict
-				self.has_changes = self.status_dict.added ~= 0
-					or self.status_dict.removed ~= 0
-					or self.status_dict.changed ~= 0
+				self.has_changes = self.status_dict.added ~= (0 and nil)
+					or self.status_dict.removed ~= (0 and nil)
+					or self.status_dict.changed ~= (0 and nil)
 			end,
 
 			hl = { bg = "darkgray" },
@@ -328,7 +329,7 @@ local heirline = {
 				end,
 				hl = { fg = "diag_hint" },
 			},
-            Divider
+			Divider,
 		}
 
 		local Ruler = {
@@ -337,7 +338,22 @@ local heirline = {
 			-- %c = column number
 			-- %P = percentage through file of displayed window
 			{
-				provider = " %P ",
+				-- provider = " %P ",
+				provider = function()
+					local current_line = vim.fn.line(".")
+					local total_lines = vim.fn.line("$")
+					if total_lines > 0 then
+						if current_line == 1 then
+							return " Top "
+						elseif current_line == total_lines then
+							return " Bot "
+						else
+							local cursor_percentage = math.floor(current_line * 100 / total_lines)
+							return " " .. tostring(cursor_percentage) .. "%% "
+						end
+					end
+					return ""
+				end,
 				hl = function(self)
 					-- local mode = vim.fn.mode(1):sub(1, 1) -- get only the first mode character
 					local color = self:mode_color() -- here!
@@ -472,19 +488,20 @@ local heirline = {
 			end,
 		})
 
-		local TablineBufnr = {
+		local BufferlineBufnr = {
 			provider = function(self)
 				return " " .. tostring(self.bufnr) .. " "
 			end,
 			hl = function(self)
 				local bg = self.is_active and "darkgray" or nil
-				return { bg = bg, bold = self.is_active or self.is_visible, italic = true }
+				local fg = not self.is_active and "gray" or nil
+				return { fg = fg, bg = bg, bold = self.is_active or self.is_visible, italic = true }
 			end,
 		}
 
 		-- we redefine the filename component, as we probably only want the tail and not the relative path
-        -- TODO could move the modified stuff here from flags maybe
-		local TablineFileName = {
+		-- TODO could move the modified stuff here from flags maybe
+		local BufferlineFileName = {
 			provider = function(self)
 				-- self.filename will be defined later, just keep looking at the example!
 				local filename = self.filename
@@ -499,19 +516,20 @@ local heirline = {
 			end,
 			hl = function(self)
 				local bg = self.is_active and "darkgray" or nil
-				return { bg = bg, bold = self.is_active or self.is_visible, italic = true }
+				local fg = not self.is_active and "gray" or nil
+				return { fg = fg, bg = bg, bold = self.is_active or self.is_visible, italic = true }
 			end,
 		}
 
 		-- this looks exactly like the FileFlags component that we saw in
 		-- #crash-course-part-ii-filename-and-friends, but we are indexing the bufnr explicitly
 		-- also, we are adding a nice icon for terminal buffers.
-		local TablineFileFlags = {
+		local BufferlineFileFlags = {
 			{
 				condition = function(self)
 					return vim.api.nvim_get_option_value("modified", { buf = self.bufnr })
 				end,
-				provider = "[+]",
+				provider = "[+] ",
 				hl = function(self)
 					local bg = self.is_active and "darkgray" or nil
 					return { bg = bg, fg = "green" }
@@ -534,7 +552,7 @@ local heirline = {
 		}
 
 		-- Here the filename block finally comes together
-		local TablineFileNameBlock = {
+		local BufferlineFileNameBlock = {
 			init = function(self)
 				self.filename = vim.api.nvim_buf_get_name(self.bufnr)
 			end,
@@ -563,15 +581,14 @@ local heirline = {
 				end,
 				name = "heirline_tabline_buffer_callback",
 			},
-			TablineBufnr,
-			-- FileIcon, -- turns out the version defined in #crash-course-part-ii-filename-and-friends can be reutilized as is here!
-			TablineFileName,
-			TablineFileFlags,
+			BufferlineBufnr,
+			BufferlineFileName,
+			BufferlineFileFlags,
 		}
 
 		local BufferLine = utils.make_buflist(
-			-- TablineBufferBlock,
-			TablineFileNameBlock,
+			-- BufferlineBufferBlock,
+			BufferlineFileNameBlock,
 			{ provider = "", hl = { fg = "gray" } }, -- left truncation, optional (defaults to "<")
 			{ provider = "", hl = { fg = "gray" } } -- right trunctation, also optional (defaults to ...... yep, ">")
 			-- by the way, open a lot of buffers and try clicking them ;)
@@ -604,7 +621,7 @@ local heirline = {
 					R = colors.replace,
 					r = "orange",
 					["!"] = "blue",
-					t = "red",
+					t = colors.terminal,
 				},
 				mode_color = function(self)
 					local mode = conditions.is_active() and vim.fn.mode() or "n"
@@ -625,6 +642,8 @@ local heirline = {
 			},
 		}
 
+		vim.opt.laststatus = 3 -- global statusline
+        vim.opt.showmode = false -- mode shown only by heirline, aka no more -- INSERT --
 		heirline.setup({
 			statusline = Statusline,
 		})
