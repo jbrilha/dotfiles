@@ -1,25 +1,35 @@
-#!/bin/zsh
+#!/bin/bash
 
 if [[ -z "$1" ]]; then
-    echo "Usage: $(basename "$0") repo_name [(-P)ublic] "
+    echo "Usage: $(basename "$0") <repo_name> [<visibility>]"
+    echo "  <repo_name>   Name of the repository"
+    echo "  <visibility>  Optional '-P' or '--public' for public visibility"
+    echo "                Default is '--private'"
     exit 1
 fi
 
 repo_name="$1"
-vis="${2:-private}"
+vis="${2:---private}"
 
-if [ "$2" = "P" ] | [ "$2" = "-P" ]; then
-    vis="public"
+if [[ "$vis" == "-P" || "$vis" == "P" ]]; then
+    vis="--public"
 fi
 
-gh repo create "$repo_name" --"$vis"
-
-if ! test -f ./README.md; then
-    echo "# $repo_name" >> README.md
+if [[ "$vis" != "--public" && "$vis" != "--private" ]]; then
+    echo "Error: <visibility> must be '--public' or '--private'."
+    exit 1
 fi
 
-if ! test -f ./.gitignore; then
-    echo ".DS_Store" >> .gitignore
+gh repo create "$repo_name" "$vis"
+
+if [[ ! -f README.md ]]; then
+    echo "# $repo_name" > README.md
+    echo "Created README.md"
+fi
+
+if [[ ! -f .gitignore ]]; then
+    echo ".DS_Store" > .gitignore
+    echo "Created .gitignore"
 fi
 
 git init
