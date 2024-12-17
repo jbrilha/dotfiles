@@ -1,7 +1,7 @@
 return {
 	{
 		"williamboman/mason.nvim",
-	event = { "BufRead" },
+		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			require("mason").setup({})
 		end,
@@ -32,7 +32,7 @@ return {
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
-	event = { "BufRead" },
+		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			require("mason-lspconfig").setup({
 				ensure_installed = {
@@ -63,7 +63,7 @@ return {
 	},
 	{
 		"neovim/nvim-lspconfig",
-	event = { "BufRead" },
+		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			local vim = vim
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
