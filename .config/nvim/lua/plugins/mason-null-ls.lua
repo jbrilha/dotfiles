@@ -36,6 +36,8 @@ return {
 			sources = {
                 -- This fucks up my markdown formatting??
 				-- null_ls.builtins.formatting.latexindent,
+				null_ls.builtins.formatting.stylua,
+				-- null_ls.builtins.formatting.luaformatter,
 				null_ls.builtins.formatting.ocamlformat,
 				null_ls.builtins.formatting.prettier,
 				null_ls.builtins.formatting.black,

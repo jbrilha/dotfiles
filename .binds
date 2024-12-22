@@ -1,3 +1,0 @@
-bindkey '^[[Z' autosuggest-accept # shift + tab
-# bindkey '/t' menu-complete    # tab -> overrides default tab completion
-bindkey -s ^f "tmux-sessionizer\n"
