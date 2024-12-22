@@ -2,30 +2,25 @@
 vim.g.mapleader = " "
 
 local function close_buffers(right)
-	local curr_buf = vim.api.nvim_get_current_buf()
+    local curr_buf = vim.api.nvim_get_current_buf()
 
-	for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-		if vim.api.nvim_buf_is_valid(buf)
-            and (
-                (buf > curr_buf and right) or
-                (buf < curr_buf and not right)
-            ) then
-
-			vim.api.nvim_buf_delete(buf, { force = false })
-		end
-	end
+    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+        if vim.api.nvim_buf_is_valid(buf) and
+            ((buf > curr_buf and right) or (buf < curr_buf and not right))
+        then
+            vim.api.nvim_buf_delete(buf, { force = false })
+        end
+    end
 end
 
 local function close_other_buffers()
-	local curr_buf = vim.api.nvim_get_current_buf()
+    local curr_buf = vim.api.nvim_get_current_buf()
 
-	for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-		if vim.api.nvim_buf_is_valid(buf)
-            and buf ~= curr_buf then
-
-			vim.api.nvim_buf_delete(buf, { force = false })
-		end
-	end
+    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+        if vim.api.nvim_buf_is_valid(buf) and buf ~= curr_buf then
+            vim.api.nvim_buf_delete(buf, { force = false })
+        end
+    end
 end
 
 -- Buffers
@@ -37,13 +32,13 @@ vim.keymap.set("n", "<leader>bca", ":%bd <CR>", { desc = "Close all buffers" })
 -- the function takes longer to close the other buffers but doesn't move my cursor to
 -- the start of the file so it's a fair trade-off
 vim.keymap.set("n", "<leader>bco", function()
-	close_other_buffers()
+    close_other_buffers()
 end, { desc = "Close all *other* buffers" })
 vim.keymap.set("n", "<leader>bcr", function()
-	close_buffers(true)
+    close_buffers(true)
 end, { desc = "Close buffers to the right" })
 vim.keymap.set("n", "<leader>bcl", function()
-	close_buffers(false)
+    close_buffers(false)
 end, { desc = "Close buffers to the left" })
 -- global bdelete | edit last buffer | bdelete last buffer which was [No Name]
 
@@ -68,14 +63,18 @@ vim.keymap.set("n", "<leader>R", ":e<CR>G", { desc = "Refresh buffer and jump to
 vim.keymap.set("n", "<leader>r", ":e<CR>", { desc = "Refresh buffer" })
 
 -- Quickfix/Location lists
-vim.keymap.set("n", "<leader>j", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<leader>k", "<cmd>cprev<CR>zz")
+vim.keymap.set("n", "<leader>j", "<cmd>cnext<CR>zz", { desc = "next in quickfix list" })
+vim.keymap.set("n", "<leader>k", "<cmd>cprev<CR>zz", { desc = "Previous in quickfix list" })
+vim.keymap.set("n", "<C-w>j", "<cmd>lnext<CR>zz", { desc = "Next in location list" })
+vim.keymap.set("n", "<C-w>k", "<cmd>lprev<CR>zz", { desc = "Previous in location list" })
+
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Go to the left window" })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Go to the down window" })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Go to the up window" })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to the right window" })
 
 -- Wrapped Nav
 vim.keymap.set({ "v", "n" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set({ "v", "n" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 -- vim.keymap.set("n", "<Up>", "v:count == 0 ? 'gk' : 'k'", {expr = true, silent = true})
 -- vim.keymap.set("n", "<Down>", "v:count == 0 ? 'gj' : 'j'", {expr = true, silent = true})
-
--- vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
--- vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
