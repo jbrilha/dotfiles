@@ -1,5 +1,5 @@
 .DS_Store
-.cache/
-compile_commands.json
 .tmux/plugins/*
 !.tmux/plugins/tmux-mem-cpu-load/
+__pycache__/
+__init__.py
