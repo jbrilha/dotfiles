@@ -11,5 +11,6 @@ ln -s ~/.dotfiles/.tmux ~/
 ln -s ~/.dotfiles/.wezterm.lua ~/
 ln -s ~/.dotfiles/.p10k.zsh ~/
 ln -s ~/.dotfiles/.gitconfig ~/
+ln -s ~/.dotfiles/.clang-format ~/
 
 sudo ln -s ~/.scripts/* /usr/local/bin/
