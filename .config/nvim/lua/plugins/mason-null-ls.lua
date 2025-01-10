@@ -42,7 +42,7 @@ return {
 				null_ls.builtins.formatting.isort,
 				null_ls.builtins.formatting.clang_format.with({
 					extra_args = {
-						"-style=file:" .. vim.fn.expand("~/.local/share/nvim/mason/bin/.clang-format"),
+						"-style=file:" .. vim.fn.expand("~/.clang-format"),
 						-- Alternatively, place .clang.format in ~/ and delete everything after -style=file
 					},
 				}),
