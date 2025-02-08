@@ -138,4 +138,14 @@ config.keys = {
 -- turn off ligatures
 config.harfbuzz_features = {"calt=0"}
 
+config.window_padding = {
+  left = '4pt',
+  right = 0,
+  top = 0,
+  bottom = 0,
+}
+
+-- config.initial_rows = 240
+-- config.initial_cols = 240
+
 return config

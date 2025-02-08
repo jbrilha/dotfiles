@@ -1,5 +1,7 @@
 export EDITOR=nvim
 
+export XDG_CONFIG_HOME=$HOME/.config
+
 n ()
 {
     # Block nesting of nnn in subshells
@@ -38,3 +40,5 @@ export PATH=$(go env GOPATH)/bin/:$PATH
 export PATH=$(opam var bin):$PATH
 
 export FZF_DEFAULT_OPTS_FILE=~/.fzfrc
+
+export CXXFLAGS="--std=c++17"
