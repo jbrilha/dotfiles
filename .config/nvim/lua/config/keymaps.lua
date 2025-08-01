@@ -12,13 +12,13 @@ vim.keymap.set("n", "<leader>bca", ":%bd <CR>", { desc = "Close all buffers" })
 -- the function takes longer to close the other buffers but doesn't move my cursor to
 -- the start of the file so it's a fair trade-off
 vim.keymap.set("n", "<leader>bco", function()
-    funcs.close_other_buffers()
+	funcs.close_other_buffers()
 end, { desc = "Close all *other* buffers" })
 vim.keymap.set("n", "<leader>bcr", function()
-    funcs.close_buffers(true)
+	funcs.close_buffers(true)
 end, { desc = "Close buffers to the right" })
 vim.keymap.set("n", "<leader>bcl", function()
-    funcs.close_buffers(false)
+	funcs.close_buffers(false)
 end, { desc = "Close buffers to the left" })
 -- global bdelete | edit last buffer | bdelete last buffer which was [No Name]
 
@@ -39,8 +39,8 @@ vim.keymap.set("n", "<C-f>", "<C-f>zz")
 vim.keymap.set("n", "<C-b>", "<C-b>zz")
 
 -- Reload file
-vim.keymap.set("n", "<leader>R", ":e<CR>G", { desc = "Refresh buffer and jump to EOF" })
-vim.keymap.set("n", "<leader>r", ":e<CR>", { desc = "Refresh buffer" })
+vim.keymap.set("n", "<leader>R", ":e<CR>Gzz", { desc = "Refresh buffer and jump to EOF" })
+vim.keymap.set("n", "<leader>r", ":e<CR>zz", { desc = "Refresh buffer" })
 
 -- Quickfix/Location lists
 vim.keymap.set("n", "<leader>j", "<cmd>cnext<CR>zz", { desc = "next in quickfix list" })
@@ -60,3 +60,5 @@ vim.keymap.set({ "v", "n" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, si
 -- vim.keymap.set("n", "<Down>", "v:count == 0 ? 'gj' : 'j'", {expr = true, silent = true})
 
 vim.keymap.set("", "<Leader>ll", funcs.toggle_lines, { desc = "Toggle lsp_lines" })
+
+vim.keymap.set("n", "ycc", "yygccp", { remap = true, desc = "Comment then paste below" })
