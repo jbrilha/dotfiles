@@ -23,3 +23,6 @@
 
 [diff]
     colorMoved = default
+[http]
+	postBuffer = 524288000
+	maxRequestBuffer = 1048576000

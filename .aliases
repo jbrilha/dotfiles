@@ -1,8 +1,22 @@
+alias get_idf='. $HOME/esp/esp-idf/export.sh'
+
+alias piou='pio run -t upload'
+alias piom='pio device monitor'
+
+alias piou32='pio run -t upload -e esp32'
+alias pious3='pio run -t upload -e esp32-s3'
+alias pious3s='pio run -t upload -e esp32-s3s'
+alias pious3f='pio run -t upload -e esp32-s3f'
+alias pious3t='pio run -t upload -e esp32-s3t'
+alias pious3v='pio run -t upload -e esp32-s3v'
+
 alias py='python3'
 
 alias lg='lazygit'
 
 alias cd..="cd .."
+
+alias tls='tmux ls'
 
 alias ls='eza'                              # no flags
 alias ls1='eza -1'                          # 1 entry per line
@@ -40,5 +54,10 @@ alias cb='cmake --build build'
 
 # display colors
 alias clrs='for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done'
+alias clrs24='for r in {0..255..51}; do for g in {0..255..51}; do for b in {0..255..51}; do printf "\033[48;2;%d;%d;%dm %3d,%3d,%3d \033[0m " $r $g $b $r $g $b; done; echo; done; echo; done'
+
+alias clion='open -na "CLion.app" --args "$@"'
+
+alias awk='gawk'
 
 eval $(thefuck --alias)

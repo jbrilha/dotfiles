@@ -3,6 +3,7 @@ background-opacity = 0.9
 theme = custom
 
 font-size = 14
+font-feature = -calt, -liga, -dlig
 macos-titlebar-style = hidden
 
 # full quit on ctrl-D

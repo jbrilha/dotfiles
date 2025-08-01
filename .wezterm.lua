@@ -35,17 +35,17 @@ local color_schemes = {
 		selection_fg = "#000000",
 		selection_bg = "#ffffff",
 
-		-- ansi = {
-		-- 	"#000000", -- 0: Black
-		-- 	"#990000", -- 1: Red
-		-- 	"#008800", -- 2: Green
-		-- 	"#ffe000", -- 3: Yellow
-		-- 	"#000088", -- 4: Blue
-		-- 	"#bb00bb", -- 5: Magenta
-		-- 	"#00cccc", -- 6: Cyan
-		-- 	"#e0e0e0", -- 7: White
-		-- },
 		ansi = {
+			"#000000", -- 0: Black
+			"#990000", -- 1: Red
+			"#008800", -- 2: Green
+			"#ffe000", -- 3: Yellow
+			"#000088", -- 4: Blue
+			"#bb00bb", -- 5: Magenta
+			"#00cccc", -- 6: Cyan
+			"#e0e0e0", -- 7: White
+		},
+		--[[ ansi = {
 			"#222222", -- 0: Bright black
 			"#ff0000", -- 1: Bright red
 			"#00ff00", -- 2: Bright green
@@ -54,7 +54,7 @@ local color_schemes = {
 			"#ff00ff", -- 5: Bright magenta
 			"#00ffff", -- 6: Bright cyan
 			"#ffffff", -- 7: Bright white
-		},
+		}, ]]
 
 		brights = {
 			"#222222", -- 0: Bright black
@@ -126,6 +126,7 @@ config.send_composed_key_when_right_alt_is_pressed = true
 
 -- no more "confirming" tilde
 config.use_dead_keys = false
+
 
 config.keys = {
 	{

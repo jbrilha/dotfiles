@@ -1,4 +1,7 @@
+export PATH=/usr/local/bin:$PATH
+
 export EDITOR=nvim
+export MANPAGER=bat
 
 export XDG_CONFIG_HOME=$HOME/.config
 
@@ -38,7 +41,22 @@ export NNN_PLUG='p:preview-tui;'
 
 export PATH=$(go env GOPATH)/bin/:$PATH
 export PATH=$(opam var bin):$PATH
+export PATH=/opt/homebrew/Caskroom/sqlcl/24.4.2.065.1115/sqlcl/bin:"$PATH"
 
 export FZF_DEFAULT_OPTS_FILE=~/.fzfrc
 
-export CXXFLAGS="--std=c++17"
+export GREEN_A=/dev/cu.usbmodem5A450572171
+export GREEN_TRIANGLE=/dev/cu.usbmodem599D1169501
+export BLUE_CROSS=/dev/cu.usbmodem599D1230391
+export RED_CIRCLE=/dev/cu.usbmodem599D1169101
+export PINK_SQUARE=/dev/cu.usbmodem5A450571511
+export I=/dev/cu.usbserial-0001
+export III=/dev/cu.usbserial-0001
+
+# export JAVA_HOME=$(/usr/libexec/java_home -v 17)
+# export JAVA_HOME=$(/usr/libexec/java_home -v 11)
+export JAVA_HOME=$(/usr/libexec/java_home -v 23)
+export PATH=$JAVA_HOME/bin:$PATH
+
+export PICO_SDK_PATH=~/pico/pico-sdk/
+export FREERTOS_KERNEL_PATH=~/FreeRTOS/FreeRTOS-Kernel/

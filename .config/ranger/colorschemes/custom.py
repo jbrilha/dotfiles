@@ -10,7 +10,7 @@ from ranger.gui.color import default_colors, reverse, bold, normal, default
 
 
 # pylint: disable=too-many-branches,too-many-statements
-class Zenburn(ColorScheme):
+class Custom(ColorScheme):
     progress_bar_color = 108
 
     def use(self, context):
