@@ -1,10 +1,11 @@
 return {
 	"stevearc/oil.nvim",
+    lazy = false,
 	config = function()
 		require("oil").setup({
 			-- Oil will take over directory buffers (e.g. `vim .` or `:e src/`)
 			-- Set to false if you still want to use netrw.
-			default_file_explorer = false,
+			default_file_explorer = true,
 			-- Id is automatically added at the beginning, and name at the end
 			-- See :help oil-columns
 			columns = {
@@ -91,7 +92,7 @@ return {
 				end,
 				-- This function defines what will never be shown, even when `show_hidden` is set
 				is_always_hidden = function(name, bufnr)
-					return false
+                    return vim.endswith(name, ".class")
 				end,
 				-- Sort file names in a more intuitive order for humans. Is less performant,
 				-- so you may want to set to false if you work with large directories.

@@ -36,12 +36,13 @@ return {
 			sources = {
                 -- This fucks up my markdown formatting??
 				-- null_ls.builtins.formatting.latexindent,
+				null_ls.builtins.formatting.ocamlformat,
 				null_ls.builtins.formatting.prettier,
 				null_ls.builtins.formatting.black,
 				null_ls.builtins.formatting.isort,
 				null_ls.builtins.formatting.clang_format.with({
 					extra_args = {
-						"-style=file:" .. vim.fn.expand("~/.local/share/nvim/mason/bin/.clang-format"),
+						"-style=file:" .. vim.fn.expand("~/.clang-format"),
 						-- Alternatively, place .clang.format in ~/ and delete everything after -style=file
 					},
 				}),

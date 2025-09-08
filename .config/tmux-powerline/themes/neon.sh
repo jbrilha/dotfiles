@@ -170,7 +170,7 @@ if [ -z "$TMUX_POWERLINE_RIGHT_STATUS_SEGMENTS" ]; then
 		# "pwd terminal"
 		# "macos_notification_count 29 255"
 		# "mailcount 9 255"
-		"now_playing terminal $green"
+		# "now_playing terminal $green"
 		# "cpu $green CPU"
 		# "load $aubergine $black"
         "disk_usage terminal $cyan"

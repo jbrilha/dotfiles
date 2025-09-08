@@ -1,4 +1,6 @@
 return {
     'numToStr/Comment.nvim',
-    opts = {}
+    opts = {},
+    -- lazy = true,
+	event = "VeryLazy",
 }
