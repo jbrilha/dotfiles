@@ -37,6 +37,7 @@ return {
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"pylsp",
+					"ocamllsp",
 					"clangd",
 					"cmake",
 					"lemminx",
@@ -57,7 +58,7 @@ return {
 					"tailwindcss",
 					"ltex",
 				},
-				automatic_installation = true,
+				automatic_enable = true,
 			})
 		end,
 	},
@@ -66,87 +67,7 @@ return {
 		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			local vim = vim
-			local capabilities = require("cmp_nvim_lsp").default_capabilities()
-			capabilities = capabilities
-
-			local lspconfig = require("lspconfig")
-			lspconfig.ts_ls.setup({
-				capabilities = capabilities,
-				root_dir = function()
-					return vim.loop.cwd()
-				end,
-				settings = {
-					javascript = {
-						format = {
-							enable = true,
-						},
-					},
-				},
-			})
-			lspconfig.lemminx.setup({
-				capabilities = capabilities,
-				settings = {
-					xml = {
-						server = {
-							workDir = "~/.cache/lemminx",
-						},
-					},
-				},
-			})
-			lspconfig.pyright.setup({ capabilities = capabilities })
-			lspconfig.clangd.setup({
-				capabilities = capabilities,
-				cmd = {
-					"clangd",
-					"--offset-encoding=utf-16",
-				},
-			})
-			lspconfig.dockerls.setup({ capabilities = capabilities })
-			lspconfig.html.setup({ capabilities = capabilities })
-			lspconfig.cmake.setup({ capabilities = capabilities })
-			-- lspconfig.eslint.setup({
-			-- 	capabilities = capabilities,
-			-- 	settings = {
-			-- 		experimental = {
-			-- 			-- allows using flat config format
-			-- 			useFlatConfig = true,
-			-- 		},
-			-- 	},
-			-- })
-			lspconfig.ltex.setup({ capabilities = capabilities })
-			-- lspconfig.texlab.setup({ capabilities = capabilities })
-			lspconfig.lua_ls.setup({ capabilities = capabilities })
-			lspconfig.marksman.setup({ capabilities = capabilities })
-			lspconfig.rust_analyzer.setup({ capabilities = capabilities })
-			lspconfig.glsl_analyzer.setup({ capabilities = capabilities })
-			lspconfig.jdtls.setup({
-				capabilities = capabilities,
-				settings = {
-					java = {
-						project = {
-							sourcePaths = { "src/main/java", "src" },
-							referencedLibraries = {
-								"libs/*.jar",
-							},
-						},
-					},
-				},
-			})
-			lspconfig.jsonls.setup({ capabilities = capabilities })
-			lspconfig.gopls.setup({
-				capabilities = capabilities,
-				-- settings = {
-				-- 	gopls = {
-				-- 		usePlaceholders = true,
-				-- 	},
-				-- },
-			})
-			lspconfig.templ.setup({ capabilities = capabilities })
-			lspconfig.ocamllsp.setup({ capabilities = capabilities })
-			-- lspconfig.cssls.setup({ capabilities = capabilities })
-
-			-- This makes wezterm ask for permissions everytime
-			-- lspconfig.tailwindcss.setup({ capabilities = capabilities })
+			-- local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 			-- Use LspAttach autocommand to only map the following keys
 			-- after the language server attaches to the current buffer
