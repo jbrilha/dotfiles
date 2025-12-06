@@ -1,4 +1,4 @@
-return {
+local M = {
 	{
 		"nvim-telescope/telescope.nvim",
 		event = "VeryLazy",
@@ -35,6 +35,9 @@ return {
 						"bin/",
 						".cache/",
 						"build/",
+						"build_pico/",
+						"build_esp32/",
+						"managed_components/",
 						"%.pdf$",
 						"%.aux$",
 						"%.fls$",
@@ -94,3 +97,4 @@ return {
 		end,
 	},
 }
+return {}
