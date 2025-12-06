@@ -57,6 +57,7 @@ return {
 					"cssls",
 					"tailwindcss",
 					"ltex",
+					"sqls",
 				},
 				automatic_enable = true,
 			})
@@ -68,6 +69,13 @@ return {
 		config = function()
 			local vim = vim
 			-- local capabilities = require("cmp_nvim_lsp").default_capabilities()
+			vim.lsp.config.sqls = {
+                -- sqls formatting has been broken for ages now
+				on_attach = function(client, _)
+					client.server_capabilities.documentFormattingProvider = false
+					client.server_capabilities.documentRangeFormattingProvider = false
+				end,
+			}
 
 			-- Use LspAttach autocommand to only map the following keys
 			-- after the language server attaches to the current buffer

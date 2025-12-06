@@ -4,7 +4,7 @@ return {
 	dependencies = {
 		"williamboman/mason.nvim",
 		"nvimtools/none-ls.nvim",
-		-- "nvimtools/none-ls-extras.nvim",
+		"nvimtools/none-ls-extras.nvim",
 	},
 	config = function()
 		require("mason").setup()
@@ -27,15 +27,23 @@ return {
 			},
 		})
 
+		local pg_dialect = { "--dialect", "postgres" }
+
 		null_ls.setup({
-            -- debug = true,
+			-- debug = true,
 			sources = {
-                -- This fucks up my markdown formatting??
+				-- This fucks up my markdown formatting??
 				-- null_ls.builtins.formatting.latexindent,
 				null_ls.builtins.formatting.ocamlformat,
 				null_ls.builtins.formatting.prettier,
 				null_ls.builtins.formatting.black,
 				null_ls.builtins.formatting.isort,
+				null_ls.builtins.diagnostics.sqlfluff.with({
+					extra_args = pg_dialect,
+				}),
+				null_ls.builtins.formatting.sqlfluff.with({
+					extra_args = pg_dialect,
+				}),
 				null_ls.builtins.formatting.clang_format.with({
 					extra_args = {
 						"-style=file:" .. vim.fn.expand("~/.clang-format"),
