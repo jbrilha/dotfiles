@@ -4,6 +4,7 @@ ln -s ~/.dotfiles/.scripts ~/
 ln -s ~/.dotfiles/.binds ~/
 ln -s ~/.dotfiles/.aliases ~/
 ln -s ~/.dotfiles/.exports ~/
+ln -s ~/.dotfiles/.fzfrc ~/
 ln -s ~/.dotfiles/.zshrc ~/
 ln -s ~/.dotfiles/.binds ~/
 ln -s ~/.dotfiles/.tmux.conf ~/
