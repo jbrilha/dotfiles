@@ -59,6 +59,8 @@ vim.keymap.set({ "v", "n" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, si
 -- vim.keymap.set("n", "<Up>", "v:count == 0 ? 'gk' : 'k'", {expr = true, silent = true})
 -- vim.keymap.set("n", "<Down>", "v:count == 0 ? 'gj' : 'j'", {expr = true, silent = true})
 
-vim.keymap.set("", "<Leader>ll", funcs.toggle_lines, { desc = "Toggle lsp_lines" })
+vim.keymap.set("", "<leader>ll", funcs.toggle_lines, { desc = "Toggle lsp_lines" })
 
 vim.keymap.set("n", "ycc", "yygccp", { remap = true, desc = "Comment then paste below" })
+
+vim.keymap.set("n", "<leader>x", funcs.chmod_file, { desc = "chmod current file" })

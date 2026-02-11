@@ -30,4 +30,11 @@ function M.toggle_lines()
     })
 end
 
+function M.chmod_file()
+    local file = vim.fn.expand("%:p")
+    vim.fn.system({"chmod", "+x", file})
+    local filename = vim.fn.expand("%:t")
+    print("chmod'ed " .. filename)
+end
+
 return M
