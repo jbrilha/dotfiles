@@ -36,7 +36,7 @@ return {
 		config = function()
 			require("mason-lspconfig").setup({
 				ensure_installed = {
-					"pylsp",
+					"erlangls",
 					"ocamllsp",
 					"clangd",
 					"cmake",
@@ -70,11 +70,31 @@ return {
 			local vim = vim
 			-- local capabilities = require("cmp_nvim_lsp").default_capabilities()
 			vim.lsp.config.sqls = {
-                -- sqls formatting has been broken for ages now
+				-- sqls formatting has been broken for ages now
 				on_attach = function(client, _)
 					client.server_capabilities.documentFormattingProvider = false
 					client.server_capabilities.documentRangeFormattingProvider = false
 				end,
+			}
+
+			vim.lsp.config.tailwindcss = {
+				filetypes = { "templ", "css", "html" },
+			}
+			vim.lsp.config.erlangls = {
+				cmd = { "erlang_ls" },
+				filetypes = { "erlang" },
+				root_markers = { "rebar.config", ".git" },
+			}
+			vim.lsp.config.pylsp = {
+				settings = {
+					pylsp = {
+						plugins = {
+							pycodestyle = {
+								maxLineLength = 80,
+							},
+						},
+					},
+				},
 			}
 
 			-- Use LspAttach autocommand to only map the following keys
