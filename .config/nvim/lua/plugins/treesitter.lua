@@ -1,28 +1,51 @@
-return {
+local languages = {
+	"c",
+	"cpp",
+	"java",
+	"lua",
+	"vim",
+	"vimdoc",
+	"python",
+	"javascript",
+	"css",
+	"dockerfile",
+	"json",
+	"html",
+	"latex",
+	"markdown",
+	"markdown_inline",
+	"ruby",
+	"rust",
+	"xml",
+	"yaml",
+	"go",
+	"templ",
+}
+
+M = {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 		event = "VeryLazy",
-
-		config = function()
-			require("nvim-treesitter.configs").setup({
-				ensure_installed = {
-					"c", "cpp", "java", "lua", "vim", "vimdoc",
-					"python", "javascript", "css", "dockerfile",
-					"json", "html", "latex", "markdown", "markdown_inline",
-					"ruby", "rust", "xml", "yaml", "go", "templ"
-				},
-				auto_install = true,
-				highlight = { enable = true },
-				indent = { enable = true },
-			})
-		end,
+		lazy = false,
+	},
+	{
+		"MeanderingProgrammer/treesitter-modules.nvim",
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		opts = {
+			ensure_installed = languages,
+			fold = { enable = false },
+			highlight = { enable = true },
+			auto_install = true,
+			indent = { enable = true },
+			incremental_selection = { enable = true },
+		},
 	},
 	{
 		"nvim-treesitter/nvim-treesitter-context",
 
 		config = function()
-            local context = require("treesitter-context")
+			local context = require("treesitter-context")
 
 			context.setup({
 				enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
@@ -38,12 +61,14 @@ return {
 				zindex = 20, -- The Z-index of the context window
 				on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
 			})
-            vim.api.nvim_set_hl(0, "TreesitterContextBottom", { underline = true})
-            vim.api.nvim_set_hl(0, "TreesitterContextLineNumber", {fg = "#B4BEFE"})
-            vim.keymap.set("n", "[c", function()
-                context.go_to_context(vim.v.count1)
-                vim.api.nvim_feedkeys('zz', 'n', true)
-            end, { silent = true })
+			vim.api.nvim_set_hl(0, "TreesitterContextBottom", { underline = true })
+			vim.api.nvim_set_hl(0, "TreesitterContextLineNumber", { fg = "#B4BEFE" })
+			vim.keymap.set("n", "[c", function()
+				context.go_to_context(vim.v.count1)
+				vim.api.nvim_feedkeys("zz", "n", true)
+			end, { silent = true })
 		end,
 	},
 }
+
+return M
