@@ -8,8 +8,19 @@ selected=$(
     {
         find ~/.dotfiles \
             ~/Developer \
-            ~/OneDrive/UNI/MEI/YEAR_1/SEM_2/* \
+            ~/embassy \
+            ~/esp \
+            ~/stm32 \
+            ~/pico \
+            ~/UNI/MEI/YEAR_2/SEM_2/* \
+            ~/UNI/MEI/YEAR_2/THESIS/* \
             \( \
+                -name "build" -o \
+                -name ".obsidian" -o \
+                -name ".cache" -o \
+                -name ".Build" -o \
+                -name ".build" -o \
+                -name ".github" -o \
                 -name ".git" -o \
                 -name "flutter" -o \
                 -path "*/testes/*" \
