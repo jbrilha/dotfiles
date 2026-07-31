@@ -127,7 +127,6 @@ config.send_composed_key_when_right_alt_is_pressed = true
 -- no more "confirming" tilde
 config.use_dead_keys = false
 
-
 config.keys = {
 	{
 		key = "0",

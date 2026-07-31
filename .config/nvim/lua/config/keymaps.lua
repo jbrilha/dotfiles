@@ -64,3 +64,5 @@ vim.keymap.set("", "<leader>ll", funcs.toggle_lines, { desc = "Toggle lsp_lines"
 vim.keymap.set("n", "ycc", "yygccp", { remap = true, desc = "Comment then paste below" })
 
 vim.keymap.set("n", "<leader>x", funcs.chmod_file, { desc = "chmod current file" })
+
+vim.keymap.set("n", "<leader>tf", funcs.toggle_format_on_save, { desc = "Toggle format on save" })

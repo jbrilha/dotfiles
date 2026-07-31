@@ -30,6 +30,11 @@ function M.toggle_lines()
     })
 end
 
+function M.toggle_format_on_save()
+    vim.g.format_on_save = not vim.g.format_on_save
+    print("Format on save: " .. (vim.g.format_on_save and "enabled" or "disabled"))
+end
+
 function M.chmod_file()
     local file = vim.fn.expand("%:p")
     vim.fn.system({"chmod", "+x", file})
