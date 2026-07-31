@@ -19,6 +19,9 @@ return {
 					["ctrl-q"] = "select-all+accept",
 				},
 			},
+			grep = {
+                hidden = true,
+			},
 		})
 
 		vim.ui.select = function(items, opts, on_choice)

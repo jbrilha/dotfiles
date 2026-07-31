@@ -45,7 +45,7 @@ return {
 					"jsonls",
 					"dockerls",
 					"html",
-					"ts_ls",
+					-- "ts_ls",
 					"eslint",
 					"texlab",
 					"lua_ls",
@@ -56,7 +56,7 @@ return {
 					"templ",
 					"cssls",
 					"tailwindcss",
-					"ltex",
+					"ltex_plus",
 					"sqls",
 				},
 				automatic_enable = true,
@@ -65,6 +65,9 @@ return {
 	},
 	{
 		"neovim/nvim-lspconfig",
+		dependencies = {
+			"barreiroleo/ltex_extra.nvim",
+		},
 		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			local vim = vim
@@ -77,6 +80,8 @@ return {
 				end,
 			}
 
+			-- vim.lsp.enable("earlangls")
+			vim.lsp.enable("hls")
 			vim.lsp.config.tailwindcss = {
 				filetypes = { "templ", "css", "html" },
 			}
@@ -84,6 +89,29 @@ return {
 				cmd = { "erlang_ls" },
 				filetypes = { "erlang" },
 				root_markers = { "rebar.config", ".git" },
+			}
+			vim.lsp.config.clangd = {
+				cmd = {
+					"clangd",
+					"--background-index",
+					"--clang-tidy",
+					"--query-driver=**/xtensa-esp*-elf-*,**/riscv32-esp-elf-*",
+				},
+			}
+			vim.lsp.config.ltex_plus = {
+				on_attach = function(client, bufnr)
+					require("ltex_extra").setup({
+						load_langs = { "en-US", "pt" },
+						path = vim.fn.expand("~") .. "/.local/share/ltex",
+					})
+				end,
+				-- settings = {
+				-- 	ltex = {
+				-- 		dictionary = {
+				-- 			["en-US"] = { "fanout" },
+				-- 		},
+				-- 	},
+				-- },
 			}
 			vim.lsp.config.pylsp = {
 				settings = {
