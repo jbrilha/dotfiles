@@ -1,14 +1,8 @@
 alias get_idf='. $HOME/esp/esp-idf/export.sh'
+alias get_idf5.5='. $HOME/esp/esp-idf-v5.5.4/export.sh'
+alias get_idf5.3='. $HOME/esp/esp-idf-v5.3.3/export.sh'
 
-alias piou='pio run -t upload'
-alias piom='pio device monitor'
-
-alias piou32='pio run -t upload -e esp32'
-alias pious3='pio run -t upload -e esp32-s3'
-alias pious3s='pio run -t upload -e esp32-s3s'
-alias pious3f='pio run -t upload -e esp32-s3f'
-alias pious3t='pio run -t upload -e esp32-s3t'
-alias pious3v='pio run -t upload -e esp32-s3v'
+alias clang='/usr/bin/clang'
 
 alias py='python3'
 
@@ -49,14 +43,13 @@ alias tff='tmux new -d && tmux send-keys "fastfetch" Enter && tmux a'
 alias tns='tmux new -s'
 alias tnt='tmux new -t'
 
+alias fcb-arm='cmake -B build --fresh -DCMAKE_TOOLCHAIN_FILE=cmake/gcc-arm-none-eabi.cmake && cmake --build build'
 alias fcb='cmake -B build --fresh && cmake --build build'
 alias cb='cmake --build build'
 
 # display colors
 alias clrs='for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done'
 alias clrs24='for r in {0..255..51}; do for g in {0..255..51}; do for b in {0..255..51}; do printf "\033[48;2;%d;%d;%dm %3d,%3d,%3d \033[0m " $r $g $b $r $g $b; done; echo; done; echo; done'
-
-alias clion='open -na "CLion.app" --args "$@"'
 
 alias awk='gawk'
 
