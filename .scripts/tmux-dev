@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$HOME/Developer/paradigm_shift/stoneflux"
+SESSION="stoneflux"
+
+if tmux has-session -t "$SESSION" 2>/dev/null; then
+  tmux attach -t "$SESSION"
+  exit 0
+fi
+
+tmux new-session -d -s "$SESSION" -n root -c "$ROOT"
+# tmux send-keys -t "$SESSION:root" "cd $ROOT" Enter
+
+tmux new-window -t "$SESSION" -n backend -c "$ROOT/stoneflux"
+# tmux send-keys -t "$SESSION:backend" "cd $ROOT/stoneflux" Enter
+
+tmux new-window -t "$SESSION" -n API -c "$ROOT/stoneflux-api"
+# tmux send-keys -t "$SESSION:API" "cd $ROOT/stoneflux-api" Enter
+
+tmux new-window -t "$SESSION" -n frontend -c "$ROOT/maintenance-frontend"
+# tmux send-keys -t "$SESSION:frontend" "cd $ROOT/maintenance-frontend" Enter
+
+tmux new-window -t "$SESSION" -n claude -c "$ROOT"
+tmux send-keys -t "$SESSION:claude" "claude" Enter
+
+tmux new-window -t "$SESSION" -n local -c "$ROOT"
+tmux split-window -v -t "$SESSION:local.0" -c "#{pane_current_path}"
+tmux split-window -h -t "$SESSION:local.0" -c "#{pane_current_path}"
+
+tmux select-window -t "$SESSION:local"
+tmux select-layout main-horizontal
+tmux send-keys -t "$SESSION:local.0" "sleep 5 && just backend" Enter
+tmux send-keys -t "$SESSION:local.1" "just maintenance-frontend" Enter
+tmux send-keys -t "$SESSION:local.2" "just compose --profile observability up" Enter
+tmux split-window -v -t "$SESSION:local.1" -c "#{pane_current_path}"
+
+tmux select-window -t "$SESSION:root"
+tmux attach -t "$SESSION"
+
