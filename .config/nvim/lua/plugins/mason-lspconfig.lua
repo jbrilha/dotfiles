@@ -150,7 +150,9 @@ return {
 					vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
 					vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
 					vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-					vim.keymap.set("v", "<leader>gf", vim.lsp.buf.format, opts)
+					vim.keymap.set("v", "<leader>gf", function()
+						vim.lsp.buf.format({ filter = require("config.functions").prefer_null_ls(ev.buf) })
+					end, opts)
 				end,
 			})
 			-- Global mappings.

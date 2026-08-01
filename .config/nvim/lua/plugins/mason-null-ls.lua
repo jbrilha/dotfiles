@@ -52,7 +52,9 @@ return {
 				}),
 			},
 		})
-		vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
+		vim.keymap.set("n", "<leader>gf", function()
+			vim.lsp.buf.format({ filter = require("config.functions").prefer_null_ls(0) })
+		end, {})
 	end,
 }
 -- return {}

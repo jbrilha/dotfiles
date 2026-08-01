@@ -18,15 +18,19 @@ end
 -- it before, neat
 vim.api.nvim_create_user_command("Sexplore", oil_sexplore, { bang = true })
 
--- using all lsp/null-ls clients that support formatting
--- TODO may have conflicts between formatters
+local funcs = require("config.functions")
+
 vim.g.format_on_save = true
 
 vim.api.nvim_create_autocmd("BufWritePre", {
 	group = vim.api.nvim_create_augroup("FormatOnSave", {}),
 	callback = function(args)
 		if vim.g.format_on_save then
-			vim.lsp.buf.format({ bufnr = args.buf, timeout_ms = 2000 })
+			vim.lsp.buf.format({
+				bufnr = args.buf,
+				timeout_ms = 2000,
+				filter = funcs.prefer_null_ls(args.buf),
+			})
 		end
 	end,
 })
