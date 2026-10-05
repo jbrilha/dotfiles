@@ -105,6 +105,7 @@ fi
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source <(fzf --zsh)
 
+. $HOME/export-esp.sh
 
 # BEGIN opam configuration
 # This is useful if you're using opam as it adds:

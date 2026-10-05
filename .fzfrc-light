@@ -1,0 +1,25 @@
+# Light counterpart to .fzfrc, picked automatically when the OS is in light mode.
+# colors are inspired by catppuccin latte (https://github.com/catppuccin/catppuccin)
+--color=fg:-1,fg+:-1,bg:-1,bg+:-1
+--color=hl:#40a02b,hl+:#fe640b,info:#8839ef,marker:#04a5e5
+--color=prompt:#40a02b,spinner:#d20f39,pointer:#df8e1d,header:#179299
+--color=border:#acb0be,label:#8c8fa1,query:#4c4f69
+--color=bg+:#e6e9ef
+--border="rounded"
+--border-label=""
+--preview-window="border-rounded"
+--prompt="$ "
+--marker="◆"
+--pointer=">"
+--separator="─"
+--scrollbar="│"
+--layout="reverse"
+--height 40%
+--keep-right
+--preview "bat --color=always --style=numbers --line-range=:100 {}"
+--preview-window="hidden"
+
+--info inline
+
+--bind 'ctrl-v:become(nvim {})'
+--bind 'ctrl-r:toggle-preview'

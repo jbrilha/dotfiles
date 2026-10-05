@@ -2,7 +2,8 @@
 [user]
 # Please adapt and uncomment the following lines:
 	name = jbrilha
-	email = j.brilha@campus.fct.unl.pt
+	email = joao.brilha2001@gmail.com
+	signingkey = /Users/joaobrilha/.ssh/id_ed25519.pub
 [core]
 	editor = nvim
     pager = delta
@@ -26,3 +27,13 @@
 [http]
 	postBuffer = 524288000
 	maxRequestBuffer = 1048576000
+[credential]
+	helper = store
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true
+[pull]
+	rebase = false
+[alias]
+	dog = log --all --decorate --oneline --graph

@@ -1,3 +1,5 @@
+local theme = require("config.theme")
+
 local heirline = {
 	"rebelot/heirline.nvim",
 	-- You can optionally lazy-load heirline on UiEnter
@@ -21,12 +23,9 @@ local heirline = {
 		local Divider = { provider = " | " }
 
 		local colors = {
-			darkgray = "#16161d",
 			black = "#000000",
 			white = "#ffffff",
 			-- gray = "#c0c0c0",
-			innerbg = nil,
-			outerbg = "#16161D",
 			normal = "#ff0040",
 			insert = "#88ff00",
 			visual = "#ffdd00",
@@ -58,6 +57,16 @@ local heirline = {
 			git_change = utils.get_highlight("DiagnosticWarn").fg,
 			git_del = utils.get_highlight("DiagnosticError").fg,
 		}
+
+		if theme.is_dark_mode() then
+			colors.bg = "#16161d"
+			colors.innerbg = nil
+			colors.outerbg = "#16161D"
+		else
+			colors.bg = "#fcfcfc"
+			colors.innerbg = "#16161D"
+			colors.outerbg = nil
+		end
 
 		heirline.load_colors(colors)
 		local ViMode = {
@@ -228,7 +237,7 @@ local heirline = {
 					or self.status_dict.changed ~= (0 and nil)
 			end,
 
-			hl = { bg = "darkgray" },
+			hl = { bg = "bg" },
 
 			{ -- git branch name
 				{
@@ -357,7 +366,7 @@ local heirline = {
 				hl = function(self)
 					-- local mode = vim.fn.mode(1):sub(1, 1) -- get only the first mode character
 					local color = self:mode_color() -- here!
-					return { bg = "darkgray", fg = color, bold = true }
+					return { bg = "bg", fg = color, bold = true }
 				end,
 			},
 			{
@@ -493,7 +502,7 @@ local heirline = {
 				return " " .. tostring(self.bufnr) .. " "
 			end,
 			hl = function(self)
-				local bg = self.is_active and "darkgray" or nil
+				local bg = self.is_active and "bg" or nil
 				local fg = not self.is_active and "gray" or nil
 				return { fg = fg, bg = bg, bold = self.is_active or self.is_visible, italic = true }
 			end,
@@ -515,7 +524,7 @@ local heirline = {
 				end
 			end,
 			hl = function(self)
-				local bg = self.is_active and "darkgray" or nil
+				local bg = self.is_active and "bg" or nil
 				local fg = not self.is_active and "gray" or nil
 				return { fg = fg, bg = bg, bold = self.is_active or self.is_visible, italic = true }
 			end,
@@ -531,7 +540,7 @@ local heirline = {
 				end,
 				provider = "[+] ",
 				hl = function(self)
-					local bg = self.is_active and "darkgray" or nil
+					local bg = self.is_active and "bg" or nil
 					return { bg = bg, fg = "green" }
 				end,
 			},
@@ -643,7 +652,7 @@ local heirline = {
 		}
 
 		vim.opt.laststatus = 3 -- global statusline
-        vim.opt.showmode = false -- mode shown only by heirline, aka no more -- INSERT --
+		vim.opt.showmode = false -- mode shown only by heirline, aka no more -- INSERT --
 		heirline.setup({
 			statusline = Statusline,
 		})

@@ -1,6 +1,6 @@
-background-opacity = 0.9
+# background-opacity = 0.9
 
-theme = custom
+theme = dark:Pro,light:Pro Light
 
 font-size = 14
 font-feature = -calt, -liga, -dlig

@@ -47,7 +47,29 @@ export PATH=$(go env GOPATH)/bin/:$PATH
 export PATH=$(opam var bin):$PATH
 export PATH=/opt/homebrew/Caskroom/sqlcl/24.4.2.065.1115/sqlcl/bin:"$PATH"
 
-export FZF_DEFAULT_OPTS_FILE=~/.fzfrc
+# pick colors based on OS appearance (dark/light), same idea as tmux-powerline.
+__is_dark_mode() {
+	case "$(uname)" in
+	Darwin)
+		defaults read -g AppleInterfaceStyle 2>/dev/null | grep -qi dark
+		;;
+	Linux)
+		gsettings get org.gnome.desktop.interface color-scheme 2>/dev/null | grep -qi dark ||
+			gsettings get org.gnome.desktop.interface gtk-theme 2>/dev/null | grep -qi dark
+		;;
+	*)
+		return 0
+		;;
+	esac
+}
+
+if __is_dark_mode; then
+	export FZF_DEFAULT_OPTS_FILE=~/.fzfrc
+	export DELTA_FEATURES=heron
+else
+	export FZF_DEFAULT_OPTS_FILE=~/.fzfrc-light
+	export DELTA_FEATURES=heron-light
+fi
 
 # export JAVA_HOME=$(/usr/libexec/java_home -v 17)
 # export JAVA_HOME=$(/usr/libexec/java_home -v 11)

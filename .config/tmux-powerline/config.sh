@@ -9,8 +9,27 @@
 	# Use patched font symbols.
 	export TMUX_POWERLINE_PATCHED_FONT_IN_USE="true"
 
-	# The theme to use.
-	export TMUX_POWERLINE_THEME=neon
+	# The theme to use, picked based on the OS appearance (dark/light).
+	__tmux_powerline_is_dark_mode() {
+		case "$(uname)" in
+		Darwin)
+			defaults read -g AppleInterfaceStyle 2>/dev/null | grep -qi dark
+			;;
+		Linux)
+			gsettings get org.gnome.desktop.interface color-scheme 2>/dev/null | grep -qi dark ||
+				gsettings get org.gnome.desktop.interface gtk-theme 2>/dev/null | grep -qi dark
+			;;
+		*)
+			return 0
+			;;
+		esac
+	}
+
+	if __tmux_powerline_is_dark_mode; then
+		export TMUX_POWERLINE_THEME=neon
+	else
+		export TMUX_POWERLINE_THEME=neon-light
+	fi
 	# Overlay directory to look for themes. There you can put your own themes outside the repo. Fallback will still be the "themes" directory in the repo.
 	export TMUX_POWERLINE_DIR_USER_THEMES="${XDG_CONFIG_HOME:-$HOME/.config}/tmux-powerline/themes"
 	# Overlay directory to look for segments. There you can put your own segments outside the repo. Fallback will still be the "segments" directory in the repo.

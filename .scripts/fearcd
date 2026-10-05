@@ -1,0 +1,8 @@
+#!/bin/zsh
+
+fearcd() {
+    dir="$(fear "$@")"
+    if [ -n "$dir" ] && [ -d "$dir" ]; then
+        cd "$dir" || return
+    fi
+}

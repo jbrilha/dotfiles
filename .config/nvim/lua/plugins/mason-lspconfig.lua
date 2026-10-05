@@ -113,6 +113,9 @@ return {
 				-- 	},
 				-- },
 			}
+			vim.lsp.config.rust_analyzer = {
+				cmd = { "/Users/joaobrilha/.cargo/bin/lspmux" },
+			}
 			vim.lsp.config.pylsp = {
 				settings = {
 					pylsp = {

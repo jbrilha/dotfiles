@@ -7,10 +7,23 @@ return {
 
 	config = function()
 		local fzf_lua = require("fzf-lua")
+
+		do
+			local manpages = require("fzf-lua.providers.manpages")
+			local orig_manpage_sh_arg = manpages.manpage_sh_arg
+			manpages.manpage_sh_arg = function(apropos_line)
+				local ok, ret = pcall(orig_manpage_sh_arg, apropos_line)
+				return ok and ret or ""
+			end
+		end
+
 		vim.keymap.set("n", "<leader>ff", fzf_lua.files, {})
 		vim.keymap.set("n", "<leader>fg", fzf_lua.live_grep, {})
 		vim.keymap.set("n", "<leader>fb", fzf_lua.buffers, {})
+		vim.keymap.set("n", "<leader>ft", fzf_lua.tabs, {})
+		vim.keymap.set("n", "<leader>fl", fzf_lua.lines, {})
 		vim.keymap.set("n", "<leader>fh", fzf_lua.help_tags, {})
+		vim.keymap.set("n", "<leader>fm", fzf_lua.man_pages, {})
 
 		fzf_lua.setup({
 			keymap = {
@@ -19,8 +32,33 @@ return {
 					["ctrl-q"] = "select-all+accept",
 				},
 			},
+			files = {
+				prompt = "fzf ❯ ",
+				git_icons = true,
+			},
 			grep = {
-                hidden = true,
+				hidden = true,
+				prompt = "rg ❯ ",
+				follow = true,
+			},
+			buffers = {
+				prompt = "bufs ❯ ",
+			},
+			tabs = {
+				prompt = "tabs ❯ ",
+			},
+			lines = {
+				prompt = "lines ❯ ",
+			},
+			diagnostics = {
+				prompt = "diagnostics ❯ ",
+			},
+			helptags = {
+				prompt = "help ❯ ",
+			},
+			manpages = {
+				prompt = "man ❯ ",
+				previewer = "man_native",
 			},
 		})
 

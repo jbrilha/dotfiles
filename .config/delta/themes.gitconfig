@@ -41,6 +41,23 @@
     minus-style = syntax "#440000"
     syntax-theme = Dracula
 
+[delta "heron-light"] # WIP
+    # author: https://github.com/jbrilha
+    # light counterpart to heron, colors inspired by catppuccin latte
+    light = true
+    keep-plus-minus-markers = false
+    commit-decoration-style = bold box ul
+    file-style = omit
+    hunk-header-decoration-style = "#1e66f5" box
+    hunk-header-file-style = "#8839ef"
+    hunk-header-line-number-style = "#40a02b"
+    hunk-header-style = file line-number syntax
+    plus-emph-style = "#004400" bold "#adffad"
+    plus-style = syntax "#d6ffd6"
+    minus-emph-style = "#440000" bold "#f6b6b6"
+    minus-style = syntax "#fbdada"
+    syntax-theme = GitHub
+
 [delta "colibri"]
     # author: https://github.com/pablospe
     # Based on woolly-mammoth: https://github.com/Kr1ss-XD.
